@@ -17,17 +17,12 @@ const linkMap = [
   {
     key: "mail_to",
     label: "Contact Support",
-    value: "mailto:support@plane.so",
+    value: "mailto:support@apollosolution.com.br",
   },
   {
-    key: "status",
-    label: "Status Page",
-    value: "https://status.plane.so/",
-  },
-  {
-    key: "twitter_handle",
-    label: "@planepowers",
-    value: "https://x.com/planepowers",
+    key: "website",
+    label: "Apollo Solution",
+    value: "https://apollosolution.com.br",
   },
 ];
 

@@ -63,7 +63,7 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
         title: "Secure emails from your own instance",
         description: (
           <>
-            Plane can send useful emails to you and your users from your own instance without talking to the Internet.
+            O Apollo pode enviar e-mails úteis para você e seus usuários a partir da sua própria instância.
             <div className="text-13 font-regular text-tertiary">
               Set it up below and please test your settings before you save them.&nbsp;
               <span className="text-danger-primary">Misconfigs can lead to email bounces and errors.</span>
@@ -98,6 +98,6 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "Email Settings - God Mode" }];
+export const meta: Route.MetaFunction = () => [{ title: "Email Settings - Apollo Admin" }];
 
 export default InstanceEmailPage;

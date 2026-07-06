@@ -1,6 +1,6 @@
 {
-  "name": "Plane",
-  "short_name": "Plane",
+  "name": "Apollo",
+  "short_name": "Apollo",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -19,8 +19,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
+  "theme_color": "#5DD62C",
+  "background_color": "#0F0F0F",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

@@ -1,11 +1,11 @@
 {
-  "name": "Plane Space",
-  "short_name": "Plane Space",
-  "description": "Plane helps you plan your work items, cycles, and product modules.",
+  "name": "Apollo Publish",
+  "short_name": "Apollo Publish",
+  "description": "Apollo ajuda você a planejar itens de trabalho, ciclos e módulos de produto.",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f9fafb",
-  "theme_color": "#3f76ff",
+  "background_color": "#0F0F0F",
+  "theme_color": "#5DD62C",
   "icons": [
     { "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
