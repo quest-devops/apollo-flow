@@ -63,7 +63,7 @@ export const PLANE_COMMUNITY_PRODUCTS: Record<string, IPaymentProduct> = {
     id: EProductSubscriptionEnum.BUSINESS,
     name: "Apollo Business",
     description:
-      "The earliest packaging of Business at $10 a seat a month billed annually, $12 a seat a month billed monthly for Plane Cloud",
+      "The earliest packaging of Business at $10 a seat a month billed annually, $12 a seat a month billed monthly for Apollo Cloud",
     type: "BUSINESS",
     prices: [
       {
@@ -117,7 +117,7 @@ export const PLANE_COMMUNITY_PRODUCTS: Record<string, IPaymentProduct> = {
 /**
  * URL for the "Talk to Sales" page where users can contact sales team
  */
-export const TALK_TO_SALES_URL = "https://plane.so/talk-to-sales";
+export const TALK_TO_SALES_URL = "https://apollosolution.com.br";
 
 /**
  * Mapping of subscription types to their respective upgrade/redirection URLs based on billing frequency
@@ -153,7 +153,7 @@ export const SUBSCRIPTION_REDIRECTION_URLS: Record<EProductSubscriptionEnum, Rec
 export const SUBSCRIPTION_WEBPAGE_URLS: Record<EProductSubscriptionEnum, string> = {
   [EProductSubscriptionEnum.FREE]: TALK_TO_SALES_URL,
   [EProductSubscriptionEnum.ONE]: TALK_TO_SALES_URL,
-  [EProductSubscriptionEnum.PRO]: "https://plane.so/pro",
-  [EProductSubscriptionEnum.BUSINESS]: "https://plane.so/business",
-  [EProductSubscriptionEnum.ENTERPRISE]: "https://plane.so/business",
+  [EProductSubscriptionEnum.PRO]: "https://apollosolution.com.br",
+  [EProductSubscriptionEnum.BUSINESS]: "https://apollosolution.com.br",
+  [EProductSubscriptionEnum.ENTERPRISE]: "https://apollosolution.com.br",
 };
