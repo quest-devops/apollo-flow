@@ -14,21 +14,39 @@ export function PlaneLockup({ width = "253", height = "53", className, color = "
       width={width}
       height={height}
       viewBox="0 0 253 53"
-      fill={color}
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g transform="translate(0 3) scale(0.9)">
-        <path d="M26 3 L49 49 H38.2 L26 24.4 L13.8 49 H3 Z" fill={color} />
-        <path d="M26 32 L34.5 49 H17.5 Z" fill={color} />
+      <mask id="apollo-lockup-ring-cut" maskUnits="userSpaceOnUse" x="-30" y="-10" width="112" height="72">
+        <rect x="-30" y="-10" width="112" height="72" fill="white" />
+        <polygon points="-25.52,50.15 70.85,1.04 74.04,7.31 -22.33,56.41" fill="black" />
+      </mask>
+      <mask id="apollo-lockup-tongue-cut" maskUnits="userSpaceOnUse" x="-30" y="-50" width="112" height="112">
+        <rect x="-30" y="-50" width="112" height="112" fill="white" />
+        <polygon points="-49.34,3.41 47.03,-45.7 74.04,7.31 -22.33,56.41" fill="black" />
+        <circle cx="15.99" cy="46.75" r="12.84" fill="black" />
+      </mask>
+      <g transform="translate(0 0.5)">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M36.92 27.04 A13.52 13.52 0 1 0 9.88 27.04 A13.52 13.52 0 1 0 36.92 27.04 Z M31.51 27.04 A8.11 8.11 0 1 0 15.29 27.04 A8.11 8.11 0 1 0 31.51 27.04 Z"
+          fill={color}
+          mask="url(#apollo-lockup-ring-cut)"
+        />
+        <circle cx="23.4" cy="27.04" r="8.11" fill={color} mask="url(#apollo-lockup-tongue-cut)" />
+        <line x1="31.63" y1="19.36" x2="43.07" y2="13.53" stroke={color} strokeWidth="2.43" strokeLinecap="round" />
+        <polygon points="46.77,14.83 34.12,21.27 3.47,38.56 35.47,23.93 48.12,17.48" fill={color} />
+        <circle cx="47.44" cy="16.16" r="1.49" fill={color} />
       </g>
       <text
-        x="60"
-        y="39"
+        x="58"
+        y="38"
         fontFamily='ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif'
-        fontSize="32"
+        fontSize="30"
         fontWeight="700"
-        letterSpacing="3"
+        letterSpacing="2.5"
         fill={color}
       >
         APOLLO
