@@ -242,6 +242,9 @@ def send_email_notification(issue_id, notification_data, receiver_id, email_noti
             # Send the mail
             subject = f"{issue.project.identifier}-{issue.sequence_id} {remove_unwanted_characters(issue.name)}"
             context = {
+                # origin do site (serve /static/ via proxy) — usado pelo logo do cabeçalho
+                # e pelos ícones de estado re-hospedados localmente em /static/emails/
+                "current_site": base_api,
                 "data": template_data,
                 "summary": summary,
                 "actors_involved": len(set(actors_involved)),
