@@ -9,11 +9,11 @@ import { useSearchParams } from "next/navigation";
 // icons
 import { Eye, EyeOff } from "lucide-react";
 // plane internal packages
-import { API_BASE_URL, E_PASSWORD_STRENGTH } from "@plane/constants";
+import { API_BASE_URL, E_PASSWORD_STRENGTH, EAuthErrorCodes } from "@plane/constants";
 import { Button } from "@plane/propel/button";
 import { AuthService } from "@plane/services";
 import { Checkbox, Input, PasswordStrengthIndicator, Spinner } from "@plane/ui";
-import { getPasswordStrength, validatePersonName, validateCompanyName } from "@plane/utils";
+import { authErrorHandler, getPasswordStrength, validatePersonName, validateCompanyName } from "@plane/utils";
 // components
 import { AuthHeader } from "@/app/(all)/(home)/auth-header";
 import { Banner } from "../common/banner";
@@ -22,20 +22,15 @@ import { FormHeader } from "./form-header";
 // service initialization
 const authService = new AuthService();
 
-// error codes
-enum EErrorCodes {
-  INSTANCE_NOT_CONFIGURED = "INSTANCE_NOT_CONFIGURED",
-  ADMIN_ALREADY_EXIST = "ADMIN_ALREADY_EXIST",
-  REQUIRED_EMAIL_PASSWORD_FIRST_NAME = "REQUIRED_EMAIL_PASSWORD_FIRST_NAME",
-  INVALID_EMAIL = "INVALID_EMAIL",
-  INVALID_PASSWORD = "INVALID_PASSWORD",
-  USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS",
-}
-
-type TError = {
-  type: EErrorCodes | undefined;
-  message: string | undefined;
-};
+// error codes que devem ser exibidos inline, sob o campo de senha (não como banner).
+// O backend rejeita senha fraca via zxcvbn (score < 3) com PASSWORD_TOO_WEAK, que o
+// authErrorHandler global NÃO cobre (no fluxo web é tratado inline) — por isso o
+// tratamento explícito aqui.
+const PASSWORD_INLINE_ERROR_CODES: string[] = [
+  EAuthErrorCodes.PASSWORD_TOO_WEAK,
+  EAuthErrorCodes.INVALID_ADMIN_PASSWORD,
+  EAuthErrorCodes.INVALID_PASSWORD,
+];
 
 // form data
 type TFormData = {
@@ -66,7 +61,6 @@ export function InstanceSetupForm() {
   const emailParam = searchParams?.get("email") || undefined;
   const isTelemetryEnabledParam = (searchParams?.get("is_telemetry_enabled") === "True" ? true : false) || true;
   const errorCode = searchParams?.get("error_code") || undefined;
-  const errorMessage = searchParams?.get("error_message") || undefined;
   // state
   const [showPassword, setShowPassword] = useState({
     password: false,
@@ -98,26 +92,17 @@ export function InstanceSetupForm() {
   }, [firstNameParam, lastNameParam, companyParam, emailParam, isTelemetryEnabledParam]);
 
   // derived values
-  const errorData: TError = useMemo(() => {
-    if (errorCode && errorMessage) {
-      switch (errorCode) {
-        case EErrorCodes.INSTANCE_NOT_CONFIGURED:
-          return { type: EErrorCodes.INSTANCE_NOT_CONFIGURED, message: errorMessage };
-        case EErrorCodes.ADMIN_ALREADY_EXIST:
-          return { type: EErrorCodes.ADMIN_ALREADY_EXIST, message: errorMessage };
-        case EErrorCodes.REQUIRED_EMAIL_PASSWORD_FIRST_NAME:
-          return { type: EErrorCodes.REQUIRED_EMAIL_PASSWORD_FIRST_NAME, message: errorMessage };
-        case EErrorCodes.INVALID_EMAIL:
-          return { type: EErrorCodes.INVALID_EMAIL, message: errorMessage };
-        case EErrorCodes.INVALID_PASSWORD:
-          return { type: EErrorCodes.INVALID_PASSWORD, message: errorMessage };
-        case EErrorCodes.USER_ALREADY_EXISTS:
-          return { type: EErrorCodes.USER_ALREADY_EXISTS, message: errorMessage };
-        default:
-          return { type: undefined, message: undefined };
-      }
-    } else return { type: undefined, message: undefined };
-  }, [errorCode, errorMessage]);
+  // O backend redireciona de volta com ?error_code=<código numérico> (EAuthErrorCodes),
+  // ex. "5021" para senha reprovada pelo zxcvbn. Erros de senha são exibidos inline sob o
+  // campo; os demais viram banner via authErrorHandler (dicionário central de mensagens).
+  const isPasswordError = !!errorCode && PASSWORD_INLINE_ERROR_CODES.includes(errorCode);
+  const passwordErrorMessage = isPasswordError
+    ? "Password too weak. Please choose a stronger, less common password."
+    : undefined;
+  const bannerError = useMemo(
+    () => (errorCode && !isPasswordError ? authErrorHandler(errorCode as EAuthErrorCodes, emailParam) : undefined),
+    [errorCode, isPasswordError, emailParam]
+  );
 
   const isButtonDisabled = useMemo(
     () =>
@@ -145,11 +130,7 @@ export function InstanceSetupForm() {
             heading="Setup your Apollo Instance"
             subHeading="Post setup you will be able to manage this Apollo instance."
           />
-          {errorData.type &&
-            errorData?.message &&
-            ![EErrorCodes.INVALID_EMAIL, EErrorCodes.INVALID_PASSWORD].includes(errorData.type) && (
-              <Banner type="error" message={errorData?.message} />
-            )}
+          {bannerError?.message && <Banner type="error" message={bannerError.message} />}
           <form
             className="space-y-4"
             method="POST"
@@ -221,12 +202,8 @@ export function InstanceSetupForm() {
                 placeholder="name@company.com"
                 value={formData.email}
                 onChange={(e) => handleFormChange("email", e.target.value)}
-                hasError={errorData.type && errorData.type === EErrorCodes.INVALID_EMAIL ? true : false}
                 autoComplete="off"
               />
-              {errorData.type && errorData.type === EErrorCodes.INVALID_EMAIL && errorData.message && (
-                <p className="px-1 text-11 text-danger-primary">{errorData.message}</p>
-              )}
             </div>
 
             <div className="w-full space-y-1">
@@ -265,7 +242,7 @@ export function InstanceSetupForm() {
                   placeholder="New password"
                   value={formData.password}
                   onChange={(e) => handleFormChange("password", e.target.value)}
-                  hasError={errorData.type && errorData.type === EErrorCodes.INVALID_PASSWORD ? true : false}
+                  hasError={isPasswordError}
                   onFocus={() => setIsPasswordInputFocused(true)}
                   onBlur={() => setIsPasswordInputFocused(false)}
                   autoComplete="new-password"
@@ -290,9 +267,7 @@ export function InstanceSetupForm() {
                   </button>
                 )}
               </div>
-              {errorData.type && errorData.type === EErrorCodes.INVALID_PASSWORD && errorData.message && (
-                <p className="px-1 text-11 text-danger-primary">{errorData.message}</p>
-              )}
+              {passwordErrorMessage && <p className="px-1 text-11 text-danger-primary">{passwordErrorMessage}</p>}
               <PasswordStrengthIndicator password={formData.password} isFocused={isPasswordInputFocused} />
             </div>
 
