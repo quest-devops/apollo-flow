@@ -60,6 +60,9 @@ x-app-env: &app-env
   LIVE_SERVER_SECRET_KEY: ${LIVE_SERVER_SECRET_KEY:-2FiJk1U2aiVPEQtzLehYGlTSnTnrs7LW}
   WEBHOOK_ALLOWED_IPS: ${WEBHOOK_ALLOWED_IPS:-}
   WEBHOOK_ALLOWED_HOSTS: ${WEBHOOK_ALLOWED_HOSTS:-}
+  # Remetente padrão dos e-mails (nome + endereço). Semeia o valor inicial da config
+  # de instância; em produção defina EMAIL_FROM no .env com o endereço real de envio.
+  EMAIL_FROM: "${EMAIL_FROM:-Apollo Operation <no-reply@apollosolution.com.br>}"
 
 services:
   web:
