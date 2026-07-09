@@ -17,13 +17,26 @@ body {
   @apply font-body bg-canvas text-primary;
 }
 
+/* Marca Apollo — título terminal (VT323) + glow LED verde. Uso pontual em telas-vitrine. */
+@utility apollo-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+@utility apollo-glow {
+  text-shadow:
+    0 0 1px color-mix(in srgb, var(--brand-default) 95%, transparent),
+    0 0 6px color-mix(in srgb, var(--brand-default) 80%, transparent),
+    0 0 15px color-mix(in srgb, var(--brand-default) 55%, transparent),
+    0 0 34px color-mix(in srgb, var(--brand-default) 35%, transparent);
+}
+
 /* emoji icon picker */
 @utility conical-gradient {
   background: conic-gradient(
     from 180deg at 50% 50%,
     #ff6b00 0deg,
     #f7ae59 70.5deg,
-    #5DD62C 151.12deg,
+    #2FE68C 151.12deg,
     #05c3ff 213deg,
     #18914f 289.87deg,
     #f6f172 329.25deg,

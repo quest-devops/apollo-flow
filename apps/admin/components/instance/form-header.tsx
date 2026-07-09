@@ -6,9 +6,11 @@
 
 export function FormHeader({ heading, subHeading }: { heading: string; subHeading: string }) {
   return (
-    <div className="flex flex-col gap-1">
-      <span className="text-20 leading-7 font-semibold text-primary">{heading}</span>
-      <span className="text-16 leading-7 font-semibold text-placeholder">{subHeading}</span>
+    <div className="flex flex-col gap-2">
+      <span className="apollo-display apollo-glow text-[2.5rem] leading-none text-accent-primary">{heading}</span>
+      <span className="text-13 leading-6 text-placeholder tracking-wide uppercase">
+        <span className="text-accent-primary">&gt;</span> {subHeading}
+      </span>
     </div>
   );
 }
