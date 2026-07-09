@@ -3,7 +3,7 @@
 <path d="M152.5 64.75H52.5C45.5964 64.75 40 70.3464 40 77.25V139.75C40 146.654 45.5964 152.25 52.5 152.25H152.5C159.404 152.25 165 146.654 165 139.75V77.25C165 70.3464 159.404 64.75 152.5 64.75Z" stroke="#B9BBC6" stroke-width="3.36" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M127.5 152.25V52.25C127.5 48.9348 126.183 45.7554 123.839 43.4112C121.495 41.067 118.315 39.75 115 39.75H90C86.6848 39.75 83.5054 41.067 81.1612 43.4112C78.817 45.7554 77.5 48.9348 77.5 52.25V152.25" stroke="#B9BBC6" stroke-width="3.36" stroke-linecap="round" stroke-linejoin="round"/>
 <g filter="url(#filter0_ddd_854_167632)">
-<circle cx="103.254" cy="173.828" r="31" fill="#337418"/>
+<circle cx="103.254" cy="173.828" r="31" fill="#00783D"/>
 <path d="M101.575 185.582C108.994 185.582 115.008 179.568 115.008 172.149C115.008 164.73 108.994 158.715 101.575 158.715C94.1555 158.715 88.1412 164.73 88.1412 172.149C88.1412 179.568 94.1555 185.582 101.575 185.582Z" stroke="white" stroke-width="2.52049" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M118.366 188.94L111.146 181.72" stroke="white" stroke-width="2.52049" stroke-linecap="round" stroke-linejoin="round"/>
 </g>

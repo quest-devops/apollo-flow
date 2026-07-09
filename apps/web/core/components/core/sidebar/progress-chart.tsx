@@ -32,8 +32,8 @@ function ProgressChart({ distribution, totalIssues, className = "", plotTitle = 
           {
             key: "current",
             label: `Current ${plotTitle}`,
-            strokeColor: "#5DD62C",
-            fill: "#5DD62C33",
+            strokeColor: "#2FE68C",
+            fill: "#2FE68C33",
             fillOpacity: 1,
             showDot: true,
             smoothCurves: true,

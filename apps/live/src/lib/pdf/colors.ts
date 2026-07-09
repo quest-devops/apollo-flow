@@ -146,19 +146,19 @@ export const NEUTRAL_COLORS = {
   black: "#0f0f0f", // oklch(0.1472 0.0034 230.83) ≈ #0f0f0f
 } as const;
 
-// Brand colors (light theme accent)
+// Brand colors (light theme accent — Apollo emerald p/ export em fundo branco)
 export const BRAND_COLORS = {
-  default: "#3f76ff", // oklch(0.4799 0.1158 242.91) - primary accent blue
-  100: "#f5f8ff",
-  200: "#e8f0ff",
-  300: "#d1e1ff",
-  400: "#b3d0ff",
-  500: "#8ab8ff",
-  600: "#5c9aff",
-  700: "#3f76ff",
-  900: "#2952b3",
-  1000: "#1e3d80",
-  1100: "#142b5c",
+  default: "#007841", // dark emerald (contraste sobre branco)
+  100: "#ebf9ef",
+  200: "#d7f4e0",
+  300: "#b6e9c7",
+  400: "#91dbab",
+  500: "#64c98d",
+  600: "#27ac69",
+  700: "#00884c",
+  900: "#006437",
+  1000: "#014d2a",
+  1100: "#04381e",
   1200: "#0d1f40",
 } as const;
 

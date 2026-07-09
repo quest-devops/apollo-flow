@@ -4,7 +4,7 @@
 <path d="M152.5 64.75H52.5C45.5964 64.75 40 70.3464 40 77.25V139.75C40 146.654 45.5964 152.25 52.5 152.25H152.5C159.404 152.25 165 146.654 165 139.75V77.25C165 70.3464 159.404 64.75 152.5 64.75Z" stroke="#4E4E54" stroke-width="3.36" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M127.5 152.25V52.25C127.5 48.9348 126.183 45.7554 123.839 43.4112C121.495 41.067 118.315 39.75 115 39.75H90C86.6848 39.75 83.5054 41.067 81.1612 43.4112C78.817 45.7554 77.5 48.9348 77.5 52.25V152.25" stroke="#4E4E54" stroke-width="3.36" stroke-linecap="round" stroke-linejoin="round"/>
 <g filter="url(#filter0_ddd_940_236606)">
-<circle cx="103.254" cy="173.828" r="31" fill="#337418"/>
+<circle cx="103.254" cy="173.828" r="31" fill="#00783D"/>
 <path d="M88.2516 163.827H118.252" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M94.9182 173.827H111.585" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M99.9182 183.827H106.585" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
