@@ -10,7 +10,8 @@ export type TCoreInstanceAuthenticationModeKeys =
   | "google"
   | "github"
   | "gitlab"
-  | "gitea";
+  | "gitea"
+  | "apollo";
 
 export type TInstanceAuthenticationModeKeys = TCoreInstanceAuthenticationModeKeys;
 
@@ -31,7 +32,8 @@ export type TInstanceAuthenticationMethodKeys =
   | "IS_GOOGLE_ENABLED"
   | "IS_GITHUB_ENABLED"
   | "IS_GITLAB_ENABLED"
-  | "IS_GITEA_ENABLED";
+  | "IS_GITEA_ENABLED"
+  | "IS_APOLLO_ENABLED";
 
 export type TInstanceGoogleAuthenticationConfigurationKeys =
   | "GOOGLE_CLIENT_ID"
@@ -56,11 +58,19 @@ export type TInstanceGiteaAuthenticationConfigurationKeys =
   | "GITEA_CLIENT_SECRET"
   | "ENABLE_GITEA_SYNC";
 
+export type TInstanceApolloAuthenticationConfigurationKeys =
+  | "APOLLO_ISSUER_URL"
+  | "APOLLO_CLIENT_ID"
+  | "APOLLO_CLIENT_SECRET"
+  | "ENABLE_APOLLO_SYNC"
+  | "APOLLO_WORKSPACE_SLUG";
+
 export type TInstanceAuthenticationConfigurationKeys =
   | TInstanceGoogleAuthenticationConfigurationKeys
   | TInstanceGithubAuthenticationConfigurationKeys
   | TInstanceGitlabAuthenticationConfigurationKeys
-  | TInstanceGiteaAuthenticationConfigurationKeys;
+  | TInstanceGiteaAuthenticationConfigurationKeys
+  | TInstanceApolloAuthenticationConfigurationKeys;
 
 export type TInstanceAuthenticationKeys = TInstanceAuthenticationMethodKeys | TInstanceAuthenticationConfigurationKeys;
 
@@ -83,4 +93,4 @@ export type TOAuthConfigs = {
   oAuthOptions: TOAuthOption[];
 };
 
-export type TCoreLoginMediums = "email" | "magic-code" | "github" | "gitlab" | "google" | "gitea";
+export type TCoreLoginMediums = "email" | "magic-code" | "github" | "gitlab" | "google" | "gitea" | "apollo";

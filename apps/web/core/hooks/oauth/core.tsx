@@ -5,6 +5,7 @@
  */
 
 // plane imports
+import { ShieldCheck } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { API_BASE_URL } from "@plane/constants";
@@ -33,7 +34,8 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       (config?.is_google_enabled ||
         config?.is_github_enabled ||
         config?.is_gitlab_enabled ||
-        config?.is_gitea_enabled)) ||
+        config?.is_gitea_enabled ||
+        config?.is_apollo_enabled)) ||
     false;
   const oAuthOptions: TOAuthOption[] = [
     {
@@ -78,6 +80,15 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
         window.location.assign(`${API_BASE_URL}/auth/gitea/${next_path ? `?next_path=${next_path}` : ``}`);
       },
       enabled: config?.is_gitea_enabled,
+    },
+    {
+      id: "apollo",
+      text: `${oauthActionText} with Apollo`,
+      icon: <ShieldCheck height={18} width={18} />,
+      onClick: () => {
+        window.location.assign(`${API_BASE_URL}/auth/apollo/${next_path ? `?next_path=${next_path}` : ``}`);
+      },
+      enabled: config?.is_apollo_enabled,
     },
   ];
 

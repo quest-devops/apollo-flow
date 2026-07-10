@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { KeyRound, Mails } from "lucide-react";
+import { KeyRound, Mails, ShieldCheck } from "lucide-react";
 // types
 import type {
   TCoreInstanceAuthenticationModeKeys,
@@ -18,6 +18,7 @@ import githubDarkModeImage from "@/app/assets/logos/github-white.png?url";
 import gitlabLogo from "@/app/assets/logos/gitlab-logo.svg?url";
 import googleLogo from "@/app/assets/logos/google-logo.svg?url";
 // components
+import { ApolloConfiguration } from "@/components/authentication/apollo-config";
 import { EmailCodesConfiguration } from "@/components/authentication/email-config-switch";
 import { GiteaConfiguration } from "@/components/authentication/gitea-config";
 import { GithubConfiguration } from "@/components/authentication/github-config";
@@ -88,5 +89,13 @@ export const getCoreAuthenticationModesMap: (
     icon: <img src={giteaLogo} height={20} width={20} alt="Gitea Logo" />,
     config: <GiteaConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GITEA_ENABLED",
+  },
+  apollo: {
+    key: "apollo",
+    name: "Apollo Autentikey",
+    description: "Authenticate with your Apollo Autentikey account (OIDC).",
+    icon: <ShieldCheck className="h-6 w-6 p-0.5 text-tertiary" />,
+    config: <ApolloConfiguration disabled={disabled} updateConfig={updateConfig} />,
+    enabledConfigKey: "IS_APOLLO_ENABLED",
   },
 });
