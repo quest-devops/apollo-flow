@@ -44,6 +44,10 @@ from .views import (
     GiteaOauthInitiateEndpoint,
     GiteaCallbackSpaceEndpoint,
     GiteaOauthInitiateSpaceEndpoint,
+    ApolloCallbackEndpoint,
+    ApolloOauthInitiateEndpoint,
+    ApolloCallbackSpaceEndpoint,
+    ApolloOauthInitiateSpaceEndpoint,
 )
 
 urlpatterns = [
@@ -149,5 +153,18 @@ urlpatterns = [
         "spaces/gitea/callback/",
         GiteaCallbackSpaceEndpoint.as_view(),
         name="space-gitea-callback",
+    ),
+    ## Apollo Oauth
+    path("apollo/", ApolloOauthInitiateEndpoint.as_view(), name="apollo-initiate"),
+    path("apollo/callback/", ApolloCallbackEndpoint.as_view(), name="apollo-callback"),
+    path(
+        "spaces/apollo/",
+        ApolloOauthInitiateSpaceEndpoint.as_view(),
+        name="space-apollo-initiate",
+    ),
+    path(
+        "spaces/apollo/callback/",
+        ApolloCallbackSpaceEndpoint.as_view(),
+        name="space-apollo-callback",
     ),
 ]

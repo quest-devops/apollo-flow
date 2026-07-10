@@ -63,6 +63,12 @@ x-app-env: &app-env
   # Remetente padrão dos e-mails (nome + endereço). Semeia o valor inicial da config
   # de instância; em produção defina EMAIL_FROM no .env com o endereço real de envio.
   EMAIL_FROM: "${EMAIL_FROM:-Apollo Operation <no-reply@apollosolution.com.br>}"
+  # SSO Apollo (Autentikey/OIDC) — semeia a config de instância no 1o boot pós-patch
+  IS_APOLLO_ENABLED: ${IS_APOLLO_ENABLED:-0}
+  APOLLO_ISSUER_URL: ${APOLLO_ISSUER_URL:-}
+  APOLLO_CLIENT_ID: ${APOLLO_CLIENT_ID:-}
+  APOLLO_CLIENT_SECRET: ${APOLLO_CLIENT_SECRET:-}
+  APOLLO_WORKSPACE_SLUG: ${APOLLO_WORKSPACE_SLUG:-}
 
 services:
   web:
