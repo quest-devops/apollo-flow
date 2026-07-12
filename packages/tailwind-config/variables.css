@@ -2,38 +2,6 @@
 @custom-variant dark-high-contrast (&:where([data-theme="dark-contrast"], [data-theme="dark-contrast"] *));
 @custom-variant light-high-contrast (&:where([data-theme="light-contrast"], [data-theme="light-contrast"] *));
 
-/* ---------- Fontes da marca Apollo Solution (auto-hospedadas em /fonts) ----------
-   JetBrains Mono = corpo/UI · VT323 = títulos de marca · Silkscreen = rótulos pixel.
-   Arquivos servidos do public/fonts de cada app (web/space/admin). */
-@font-face {
-  font-family: "JetBrains Mono";
-  font-weight: 100 800;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/JetBrainsMono-Variable.ttf") format("truetype");
-}
-@font-face {
-  font-family: "VT323";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/VT323-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Silkscreen";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/Silkscreen-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Silkscreen";
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  src: url("/fonts/Silkscreen-Bold.ttf") format("truetype");
-}
-
 @layer base {
   :root,
   :host {
@@ -1012,17 +980,14 @@
   /* ---------- Font family ---------- */
   --font-*: initial;
   --font-heading:
-    "JetBrains Mono", "Inter Variable", ui-monospace, SFMono-Regular, Menlo, monospace, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   --font-body:
-    "JetBrains Mono", "Inter Variable", ui-monospace, SFMono-Regular, Menlo, monospace, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    "Inter Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   --font-code:
-    "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
-  /* Marca: título/terminal (VT323) e rótulo pixel (Silkscreen) — uso pontual em telas-vitrine */
-  --font-display: "VT323", "JetBrains Mono", monospace;
-  --font-pixel: "Silkscreen", "JetBrains Mono", monospace;
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
 
   /* ---------- Font weight ---------- */
   --font-weight-*: initial;
