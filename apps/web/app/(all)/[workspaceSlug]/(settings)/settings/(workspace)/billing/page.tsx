@@ -4,38 +4,15 @@
  * See the LICENSE file for details.
  */
 
-import { observer } from "mobx-react";
-// component
-import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
-import { NotAuthorizedView } from "@/components/auth-screens/not-authorized-view";
-import { PageHead } from "@/components/core/page-title";
-import { SettingsContentWrapper } from "@/components/settings/content-wrapper";
-// hooks
-import { useWorkspace } from "@/hooks/store/use-workspace";
-import { useUserPermissions } from "@/hooks/store/user";
-// plane web components
-import { BillingRoot } from "@/plane-web/components/workspace/billing";
-// local imports
-import { BillingWorkspaceSettingsHeader } from "./header";
+// Apollo: white-label — a página "Billing & Plans" do fornecedor foi removida
+// (o item também saiu do menu de configurações). Acesso direto redireciona
+// para as configurações gerais do workspace.
+import { redirect } from "react-router";
 
-function BillingSettingsPage() {
-  // store hooks
-  const { workspaceUserInfo, allowPermissions } = useUserPermissions();
-  const { currentWorkspace } = useWorkspace();
-  // derived values
-  const canPerformWorkspaceAdminActions = allowPermissions([EUserPermissions.ADMIN], EUserPermissionsLevel.WORKSPACE);
-  const pageTitle = currentWorkspace?.name ? `${currentWorkspace.name} - Billing & Plans` : undefined;
+export const clientLoader = ({ params }: { params: { workspaceSlug?: string } }) => {
+  throw redirect(`/${params.workspaceSlug}/settings`);
+};
 
-  if (workspaceUserInfo && !canPerformWorkspaceAdminActions) {
-    return <NotAuthorizedView section="settings" className="h-auto" />;
-  }
-
-  return (
-    <SettingsContentWrapper header={<BillingWorkspaceSettingsHeader />} hugging>
-      <PageHead title={pageTitle} />
-      <BillingRoot />
-    </SettingsContentWrapper>
-  );
+export default function BillingSettingsPage() {
+  return null;
 }
-
-export default observer(BillingSettingsPage);

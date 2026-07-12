@@ -4,43 +4,24 @@
  * See the LICENSE file for details.
  */
 
-import { useState } from "react";
 import { observer } from "mobx-react";
 // ui
-import { useTranslation } from "@plane/i18n";
 import { Tooltip } from "@plane/propel/tooltip";
 // hooks
 import { usePlatformOS } from "@/hooks/use-platform-os";
 import packageJson from "package.json";
-// local components
-import { PaidPlanUpgradeModal } from "../license";
-import { Button } from "@plane/propel/button";
 
+// Apollo: white-label — o badge deixa de abrir o modal de upgrade do
+// fornecedor; vira um selo informativo com a versão no tooltip.
 export const WorkspaceEditionBadge = observer(function WorkspaceEditionBadge() {
-  // states
-  const [isPaidPlanPurchaseModalOpen, setIsPaidPlanPurchaseModalOpen] = useState(false);
-  // translation
-  const { t } = useTranslation();
   // platform
   const { isMobile } = usePlatformOS();
 
   return (
-    <>
-      <PaidPlanUpgradeModal
-        isOpen={isPaidPlanPurchaseModalOpen}
-        handleClose={() => setIsPaidPlanPurchaseModalOpen(false)}
-      />
-      <Tooltip tooltipContent={`Version: v${packageJson.version}`} isMobile={isMobile}>
-        <Button
-          variant="tertiary"
-          size="lg"
-          onClick={() => setIsPaidPlanPurchaseModalOpen(true)}
-          aria-haspopup="dialog"
-          aria-label={t("aria_labels.projects_sidebar.edition_badge")}
-        >
-          Community
-        </Button>
-      </Tooltip>
-    </>
+    <Tooltip tooltipContent={`Versão: v${packageJson.version}`} isMobile={isMobile}>
+      <div className="w-fit cursor-default rounded-md bg-layer-2 px-3 py-1.5 text-13 font-medium text-tertiary">
+        Apollo Operation
+      </div>
+    </Tooltip>
   );
 });
