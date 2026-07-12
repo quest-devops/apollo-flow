@@ -34,11 +34,13 @@ def init_tracer():
     # Set as global tracer provider
     trace.set_tracer_provider(tracer_provider)
 
-    # Configure the OTLP exporter
-    otel_endpoint = os.environ.get("OTLP_ENDPOINT", "https://telemetry.plane.so")
-    otlp_exporter = OTLPSpanExporter(endpoint=otel_endpoint)
-    span_processor = BatchSpanProcessor(otlp_exporter)
-    tracer_provider.add_span_processor(span_processor)
+    # Apollo: sem phone-home — só exporta se um OTLP_ENDPOINT próprio for
+    # configurado no ambiente (o default do upstream era telemetry.plane.so).
+    otel_endpoint = os.environ.get("OTLP_ENDPOINT")
+    if otel_endpoint:
+        otlp_exporter = OTLPSpanExporter(endpoint=otel_endpoint)
+        span_processor = BatchSpanProcessor(otlp_exporter)
+        tracer_provider.add_span_processor(span_processor)
 
     # Initialize Django instrumentation
     DjangoInstrumentor().instrument()

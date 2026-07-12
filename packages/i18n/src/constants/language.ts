@@ -8,6 +8,10 @@ import type { TLanguage, ILanguageOption } from "../types";
 
 export const FALLBACK_LANGUAGE: TLanguage = "en";
 
+/* Apollo: idioma padrão da instância (novos usuários e telas não logadas).
+   O FALLBACK_LANGUAGE segue "en" — é o fallback de CHAVE faltante na tradução. */
+export const DEFAULT_LANGUAGE: TLanguage = "pt-BR";
+
 export const SUPPORTED_LANGUAGES: ILanguageOption[] = [
   { label: "English", value: "en" },
   { label: "Français", value: "fr" },

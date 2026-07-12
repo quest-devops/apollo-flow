@@ -1,12 +1,12 @@
 {
   "theme_color": "#2FE68C",
-  "background_color": "#ffffff",
+  "background_color": "#141414",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Plane | Accelerate software development with peace.",
-  "short_name": "Plane",
-  "description": "Plane accelerated the software development by order of magnitude for agencies and product companies.",
+  "name": "Apollo Operation | Gestão de projetos moderna",
+  "short_name": "Apollo Operation",
+  "description": "Apollo Operation — gestão de projetos e wiki da Apollo Solution.",
   "icons": [
     {
       "src": "/icon-192x192.png",

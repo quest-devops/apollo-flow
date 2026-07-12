@@ -136,7 +136,10 @@ class WorkSpaceViewSet(BaseViewSet):
                 data["total_members"] = total_members
                 data["role"] = 20
 
-                workspace_seed.delay(serializer.data["id"])
+                # Apollo: workspace novo nasce limpo — sem o projeto-tutorial do
+                # fornecedor (conteúdo/links/imagens do Plane). Tutorial próprio, se
+                # vier, será um seed Apollo.
+                # workspace_seed.delay(serializer.data["id"])
 
                 track_event.delay(
                     user_id=request.user.id,
