@@ -83,7 +83,14 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
     },
     {
       id: "apollo",
-      text: `${oauthActionText} with Apollo`,
+      // Instância pt-BR: o rótulo do SSO Apollo é traduzido (os demais provedores
+      // seguem o padrão inglês do upstream e ficam desativados na nossa stack)
+      text:
+        oauthActionText === "Sign up"
+          ? "Criar conta com Apollo"
+          : oauthActionText === "Continue"
+            ? "Continuar com Apollo"
+            : "Entrar com Apollo",
       icon: <ShieldCheck height={18} width={18} />,
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/apollo/${next_path ? `?next_path=${next_path}` : ``}`);

@@ -22,12 +22,12 @@ type TAuthHeaderDetails = {
 
 const Titles: TAuthHeaderDetails = {
   [EAuthModes.SIGN_IN]: {
-    header: "Sign in to upvote or comment",
-    subHeader: "Contribute in nudging the features you want to get built.",
+    header: "Entre para votar ou comentar",
+    subHeader: "Contribua para priorizar as funcionalidades que você quer ver construídas.",
   },
   [EAuthModes.SIGN_UP]: {
-    header: "View, comment, and do more",
-    subHeader: "Sign up or log in to work with Apollo work items and Pages.",
+    header: "Veja, comente e faça mais",
+    subHeader: "Crie sua conta ou entre para trabalhar com os itens e páginas do Apollo.",
   },
 };
 
@@ -40,8 +40,8 @@ export function AuthHeader(props: TAuthHeader) {
     }
 
     return {
-      header: "Comment or react to work items",
-      subHeader: "Use Apollo to add your valuable inputs to features.",
+      header: "Comente ou reaja aos itens de trabalho",
+      subHeader: "Use o Apollo para contribuir com o que está sendo construído.",
     };
   };
 
