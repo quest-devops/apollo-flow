@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { FileText, GithubIcon, MessageSquare, Rocket } from "lucide-react";
+import { FileText, MessageSquare, Rocket } from "lucide-react";
 // components
 import type { TPowerKCommandConfig } from "@/components/power-k/core/types";
 // hooks
@@ -43,27 +43,16 @@ export const usePowerKHelpCommands = (): TPowerKCommandConfig[] => {
       isVisible: () => true,
       closeOnSelect: true,
     },
+    // Apollo: white-label — "join_forum" e "report_bug" (canais do fornecedor)
+    // substituídos por contato com o suporte Apollo.
     {
-      id: "join_forum",
+      id: "contact_support",
       type: "action",
       group: "help",
-      i18n_title: "power_k.help_actions.join_forum",
+      i18n_title: "contact_sales",
       icon: MessageSquare,
       action: () => {
-        window.open("https://apollosolution.com.br", "_blank", "noopener,noreferrer");
-      },
-      isEnabled: () => true,
-      isVisible: () => true,
-      closeOnSelect: true,
-    },
-    {
-      id: "report_bug",
-      type: "action",
-      group: "help",
-      i18n_title: "power_k.help_actions.report_bug",
-      icon: GithubIcon,
-      action: () => {
-        window.open("https://apollosolution.com.br", "_blank", "noopener,noreferrer");
+        window.open("mailto:support@apollosolution.com.br", "_blank", "noopener,noreferrer");
       },
       isEnabled: () => true,
       isVisible: () => true,

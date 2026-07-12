@@ -402,7 +402,7 @@ export default {
   time_tracking_description: "Записывайте время, потраченное на рабочие элементы и проекты.",
   work_management_description: "Управление рабочими элементами и проектами",
   documentation: "Документация",
-  contact_sales: "Связаться с отделом продаж",
+  contact_sales: "Связаться с поддержкой",
   hyper_mode: "Гиперрежим",
   keyboard_shortcuts: "Горячие клавиши",
   whats_new: "Что нового?",

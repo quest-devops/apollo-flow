@@ -384,7 +384,7 @@ export default {
   time_tracking_description: "記錄在工作事項和專案上花費的時間。",
   work_management_description: "輕鬆管理您的工作和專案。",
   documentation: "文件",
-  contact_sales: "聯絡業務",
+  contact_sales: "聯絡支援",
   hyper_mode: "極速模式",
   keyboard_shortcuts: "鍵盤快速鍵",
   whats_new: "新功能",

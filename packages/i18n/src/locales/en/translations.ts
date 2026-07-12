@@ -229,7 +229,7 @@ export default {
   time_tracking_description: "Log time spent on work items and projects.",
   work_management_description: "Manage your work and projects with ease.",
   documentation: "Documentation",
-  contact_sales: "Contact sales",
+  contact_sales: "Contact support",
   hyper_mode: "Hyper Mode",
   keyboard_shortcuts: "Keyboard shortcuts",
   whats_new: "What's new?",

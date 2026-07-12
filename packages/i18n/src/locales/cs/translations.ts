@@ -395,7 +395,7 @@ export default {
   time_tracking_description: "Zaznamenávejte čas strávený na pracovních položkách a projektech.",
   work_management_description: "Spravujte svou práci a projekty snadno.",
   documentation: "Dokumentace",
-  contact_sales: "Kontaktovat prodej",
+  contact_sales: "Kontaktovat podporu",
   hyper_mode: "Hyper režim",
   keyboard_shortcuts: "Klávesové zkratky",
   whats_new: "Co je nového?",

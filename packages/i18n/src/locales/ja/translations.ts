@@ -395,7 +395,7 @@ export default {
   time_tracking_description: "作業項目やプロジェクトに費やした時間を記録します。",
   work_management_description: "作業とプロジェクトを簡単に管理します。",
   documentation: "ドキュメント",
-  contact_sales: "営業に問い合わせ",
+  contact_sales: "サポートに問い合わせる",
   hyper_mode: "Hyper Mode",
   keyboard_shortcuts: "キーボードショートカット",
   whats_new: "新機能",

@@ -396,7 +396,7 @@ export default {
   time_tracking_description: "İş öğeleri ve projelerde harcanan zamanı kaydedin.",
   work_management_description: "İşlerinizi ve projelerinizi kolayca yönetin.",
   documentation: "Dokümantasyon",
-  contact_sales: "Satış Ekibiyle İletişim",
+  contact_sales: "Destek ile iletişime geçin",
   hyper_mode: "Hiper Mod",
   keyboard_shortcuts: "Klavye Kısayolları",
   whats_new: "Yenilikler",

@@ -11,28 +11,25 @@ import { HelpCircle, MessageSquare, MoveLeft } from "lucide-react";
 import { Transition } from "@headlessui/react";
 import { WEB_BASE_URL } from "@plane/constants";
 // plane internal packages
-import { GithubIcon, NewTabIcon, PageIcon } from "@plane/propel/icons";
+import { NewTabIcon, PageIcon } from "@plane/propel/icons";
 import { Tooltip } from "@plane/propel/tooltip";
 import { cn } from "@plane/utils";
 // hooks
 import { useInstance, useTheme } from "@/hooks/store";
 // assets
 
+// Apollo: white-label — "Join our Forum" e "Report a bug" (canais do fornecedor)
+// removidos; suporte é via Apollo Solution.
 const helpOptions = [
   {
-    name: "Documentation",
+    name: "Documentação",
     href: "https://apollosolution.com.br",
     Icon: PageIcon,
   },
   {
-    name: "Join our Forum",
-    href: "https://apollosolution.com.br",
+    name: "Contatar suporte",
+    href: "mailto:support@apollosolution.com.br",
     Icon: MessageSquare,
-  },
-  {
-    name: "Report a bug",
-    href: "https://apollosolution.com.br",
-    Icon: GithubIcon,
   },
 ];
 

@@ -393,7 +393,7 @@ export default {
   time_tracking_description: "Rejestruj czas spędzony na elementach pracy i projektach.",
   work_management_description: "Łatwo zarządzaj swoją pracą i projektami.",
   documentation: "Dokumentacja",
-  contact_sales: "Skontaktuj się z działem sprzedaży",
+  contact_sales: "Skontaktuj się z pomocą techniczną",
   hyper_mode: "Tryb Hyper",
   keyboard_shortcuts: "Skróty klawiaturowe",
   whats_new: "Co nowego?",

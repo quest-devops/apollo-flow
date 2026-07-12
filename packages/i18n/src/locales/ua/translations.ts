@@ -402,7 +402,7 @@ export default {
   time_tracking_description: "Фіксуйте час, витрачений на робочі одиниці та проєкти.",
   work_management_description: "Зручно керуйте своєю роботою та проєктами.",
   documentation: "Документація",
-  contact_sales: "Зв’язатися з відділом продажів",
+  contact_sales: "Звʼязатися з підтримкою",
   hyper_mode: "Гіпер-режим",
   keyboard_shortcuts: "Гарячі клавіші",
   whats_new: "Що нового?",
