@@ -16,7 +16,7 @@ export function PageHead(props: PageHeadTitleProps) {
 
   useEffect(() => {
     if (title) {
-      document.title = title ?? "Apollo | Gestão de projetos moderna";
+      document.title = title ?? "ApolloFlow | Gestão de projetos moderna";
     }
   }, [title]);
 
