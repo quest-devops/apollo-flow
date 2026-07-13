@@ -4,8 +4,8 @@
  * See the LICENSE file for details.
  */
 
-export const SITE_NAME = "Apollo | Gestão de projetos moderna";
-export const SITE_TITLE = "Apollo | Gestão de projetos moderna";
+export const SITE_NAME = "ApolloFlow | Gestão de projetos moderna";
+export const SITE_TITLE = "ApolloFlow | Gestão de projetos moderna";
 export const SITE_DESCRIPTION =
   "Ferramenta de gestão de projetos para gerenciar itens de trabalho, ciclos e roadmaps com facilidade";
 export const SITE_KEYWORDS =

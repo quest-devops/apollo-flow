@@ -20,7 +20,7 @@ export const WorkspaceEditionBadge = observer(function WorkspaceEditionBadge() {
   return (
     <Tooltip tooltipContent={`Versão: v${packageJson.version}`} isMobile={isMobile}>
       <div className="w-fit cursor-default rounded-md bg-layer-2 px-3 py-1.5 text-13 font-medium text-tertiary">
-        Apollo Operation
+        ApolloFlow
       </div>
     </Tooltip>
   );

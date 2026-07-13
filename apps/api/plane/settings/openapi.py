@@ -12,8 +12,8 @@ SPECTACULAR_SETTINGS = {
     # ========================================================================
     # Basic API Information
     # ========================================================================
-    "TITLE": "Apollo Operation REST API",
-    "DESCRIPTION": "Apollo Operation REST API",
+    "TITLE": "ApolloFlow REST API",
+    "DESCRIPTION": "ApolloFlow REST API",
     "CONTACT": {
         "name": "Apollo Solution",
         "url": "https://apollosolution.com.br",

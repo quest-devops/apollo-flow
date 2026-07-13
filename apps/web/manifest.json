@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Apollo Operation | Gestão de projetos moderna",
-  "short_name": "Apollo Operation",
-  "description": "Apollo Operation — gestão de projetos e wiki da Apollo Solution.",
+  "name": "ApolloFlow | Gestão de projetos moderna",
+  "short_name": "ApolloFlow",
+  "description": "ApolloFlow — gestão de projetos e wiki da Apollo Solution.",
   "icons": [
     {
       "src": "/icon-192x192.png",
