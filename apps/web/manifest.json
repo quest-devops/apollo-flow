@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "ApolloFlow | Gestão inteligente",
-  "short_name": "ApolloFlow",
-  "description": "ApolloFlow — gestão de projetos e wiki da Apollo Solution.",
+  "name": "ApolloPlan | Gestão inteligente",
+  "short_name": "ApolloPlan",
+  "description": "ApolloPlan — gestão de projetos e wiki da Apollo Solution.",
   "icons": [
     {
       "src": "/icon-192x192.png",

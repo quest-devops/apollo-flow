@@ -1,4 +1,4 @@
-# ApolloFlow: idioma padrão do perfil = pt-BR (novos usuários).
+# ApolloPlan: idioma padrão do perfil = pt-BR (novos usuários).
 # Usuários existentes não são alterados (default só vale na criação).
 
 from django.db import migrations, models

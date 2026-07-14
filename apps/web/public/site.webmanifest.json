@@ -1,7 +1,7 @@
 {
-  "name": "ApolloFlow",
-  "short_name": "ApolloFlow",
-  "description": "ApolloFlow ajuda você a planejar itens de trabalho, ciclos e módulos de produto.",
+  "name": "ApolloPlan",
+  "short_name": "ApolloPlan",
+  "description": "ApolloPlan ajuda você a planejar itens de trabalho, ciclos e módulos de produto.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#0F0F0F",

@@ -62,7 +62,7 @@ x-app-env: &app-env
   WEBHOOK_ALLOWED_HOSTS: ${WEBHOOK_ALLOWED_HOSTS:-}
   # Remetente padrão dos e-mails (nome + endereço). Semeia o valor inicial da config
   # de instância; em produção defina EMAIL_FROM no .env com o endereço real de envio.
-  EMAIL_FROM: "${EMAIL_FROM:-ApolloFlow <no-reply@apollosolution.com.br>}"
+  EMAIL_FROM: "${EMAIL_FROM:-ApolloPlan <no-reply@apollosolution.com.br>}"
   # Cadastro público desativado por padrão (semeia a config de instância no registro):
   # só entra quem recebeu convite de um admin. Reversível no god-mode > Authentication.
   ENABLE_SIGNUP: ${ENABLE_SIGNUP:-0}

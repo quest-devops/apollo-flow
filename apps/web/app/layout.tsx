@@ -25,7 +25,7 @@ import icon512 from "@/app/assets/icons/icon-512x512.png?url";
 import { AppProvider } from "./provider";
 
 export const meta = () => [
-  { title: "ApolloFlow | Gestão inteligente" },
+  { title: "ApolloPlan | Gestão inteligente" },
   { name: "description", content: SITE_DESCRIPTION },
   {
     name: "keywords",
@@ -37,7 +37,7 @@ export const meta = () => [
     content:
       "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
   },
-  { property: "og:title", content: "ApolloFlow | Gestão inteligente" },
+  { property: "og:title", content: "ApolloPlan | Gestão inteligente" },
   {
     property: "og:description",
     content: "Ferramenta de gestão de projetos para gerenciar itens de trabalho, ciclos e roadmaps com facilidade",
@@ -46,12 +46,12 @@ export const meta = () => [
   { property: "og:image", content: "https://apollosolution.com.br/og-image.png" },
   { property: "og:image:width", content: "1200" },
   { property: "og:image:height", content: "630" },
-  { property: "og:image:alt", content: "ApolloFlow - Gestão inteligente" },
+  { property: "og:image:alt", content: "ApolloPlan - Gestão inteligente" },
   { name: "twitter:card", content: "summary_large_image" },
   { name: "twitter:image", content: "https://apollosolution.com.br/og-image.png" },
   { name: "twitter:image:width", content: "1200" },
   { name: "twitter:image:height", content: "630" },
-  { name: "twitter:image:alt", content: "ApolloFlow - Gestão inteligente" },
+  { name: "twitter:image:alt", content: "ApolloPlan - Gestão inteligente" },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

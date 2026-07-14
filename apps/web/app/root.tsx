@@ -33,7 +33,7 @@ import interVariableWoff2 from "@fontsource-variable/inter/files/inter-latin-wgh
 import "@fontsource/material-symbols-rounded";
 import "@fontsource/ibm-plex-mono";
 
-const APP_TITLE = "ApolloFlow | Gestão inteligente";
+const APP_TITLE = "ApolloPlan | Gestão inteligente";
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/png", sizes: "32x32", href: favicon32 },
@@ -106,7 +106,7 @@ export const meta: Route.MetaFunction = () => [
   { property: "og:image", content: ogImage },
   { property: "og:image:width", content: "1200" },
   { property: "og:image:height", content: "630" },
-  { property: "og:image:alt", content: "ApolloFlow - Gestão inteligente" },
+  { property: "og:image:alt", content: "ApolloPlan - Gestão inteligente" },
   {
     name: "keywords",
     content:
@@ -116,7 +116,7 @@ export const meta: Route.MetaFunction = () => [
   { name: "twitter:image", content: ogImage },
   { name: "twitter:image:width", content: "1200" },
   { name: "twitter:image:height", content: "630" },
-  { name: "twitter:image:alt", content: "ApolloFlow - Gestão inteligente" },
+  { name: "twitter:image:alt", content: "ApolloPlan - Gestão inteligente" },
 ];
 
 export default function Root() {

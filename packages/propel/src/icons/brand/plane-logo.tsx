@@ -8,7 +8,7 @@ import * as React from "react";
 
 import type { ISvgIcons } from "../type";
 
-// Símbolo ApolloFlow (3 barras ascendentes — kit final/apps/apolloflow).
+// Símbolo ApolloPlan (3 barras ascendentes — kit final/apps/apolloplan).
 // Herda a cor via prop `color` (currentColor).
 export function PlaneLogo({ width = "52", height = "52", className, color = "currentColor" }: ISvgIcons) {
   return (

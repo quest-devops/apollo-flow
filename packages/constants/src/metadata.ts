@@ -4,8 +4,8 @@
  * See the LICENSE file for details.
  */
 
-export const SITE_NAME = "ApolloFlow | Gestão inteligente";
-export const SITE_TITLE = "ApolloFlow | Gestão inteligente";
+export const SITE_NAME = "ApolloPlan | Gestão inteligente";
+export const SITE_TITLE = "ApolloPlan | Gestão inteligente";
 export const SITE_DESCRIPTION =
   "Ferramenta de gestão de projetos para gerenciar itens de trabalho, ciclos e roadmaps com facilidade";
 export const SITE_KEYWORDS =
