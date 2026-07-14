@@ -62,7 +62,7 @@ export function InstanceGithubConfigForm(props: Props) {
       label: "Client ID",
       description: (
         <>
-          You will get this from your{" "}
+          Você obtém isto nas{" "}
           <a
             tabIndex={-1}
             href="https://github.com/settings/applications/new"
@@ -70,7 +70,7 @@ export function InstanceGithubConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitHub OAuth application settings.
+            configurações do aplicativo OAuth do GitHub.
           </a>
         </>
       ),
@@ -84,7 +84,7 @@ export function InstanceGithubConfigForm(props: Props) {
       label: "Client secret",
       description: (
         <>
-          Your client secret is also found in your{" "}
+          Seu Client secret também fica nas{" "}
           <a
             tabIndex={-1}
             href="https://github.com/settings/applications/new"
@@ -92,7 +92,7 @@ export function InstanceGithubConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitHub OAuth application settings.
+            configurações do aplicativo OAuth do GitHub.
           </a>
         </>
       ),
@@ -103,8 +103,8 @@ export function InstanceGithubConfigForm(props: Props) {
     {
       key: "GITHUB_ORGANIZATION_ID",
       type: "text",
-      label: "Organization ID",
-      description: <>The organization github ID.</>,
+      label: "ID da organização",
+      description: <>O ID da organização no GitHub.</>,
       placeholder: "123456789",
       error: Boolean(errors.GITHUB_ORGANIZATION_ID),
       required: false,
@@ -123,7 +123,7 @@ export function InstanceGithubConfigForm(props: Props) {
       url: originURL,
       description: (
         <>
-          We will auto-generate this. Paste this into the <CodeBlock darkerShade>Authorized origin URL</CodeBlock> field{" "}
+          Geramos isto automaticamente. Cole no campo <CodeBlock darkerShade>Authorized origin URL</CodeBlock>{" "}
           <a
             tabIndex={-1}
             href="https://github.com/settings/applications/new"
@@ -131,7 +131,7 @@ export function InstanceGithubConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            here.
+            aqui.
           </a>
         </>
       ),
@@ -145,8 +145,7 @@ export function InstanceGithubConfigForm(props: Props) {
       url: `${originURL}/auth/github/callback/`,
       description: (
         <>
-          We will auto-generate this. Paste this into your <CodeBlock darkerShade>Authorized Callback URI</CodeBlock>{" "}
-          field{" "}
+          Geramos isto automaticamente. Cole no campo <CodeBlock darkerShade>Authorized Callback URI</CodeBlock>{" "}
           <a
             tabIndex={-1}
             href="https://github.com/settings/applications/new"
@@ -154,7 +153,7 @@ export function InstanceGithubConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            here.
+            aqui.
           </a>
         </>
       ),
@@ -168,8 +167,8 @@ export function InstanceGithubConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Done!",
-        message: "Your GitHub authentication is configured. You should test it now.",
+        title: "Pronto!",
+        message: "A autenticação com GitHub foi configurada. Recomendamos testá-la agora.",
       });
       reset({
         GITHUB_CLIENT_ID: response.find((item) => item.key === "GITHUB_CLIENT_ID")?.value,
@@ -199,7 +198,7 @@ export function InstanceGithubConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">GitHub-provided details for Apollo</div>
+            <div className="pt-2.5 text-18 font-medium">Dados do GitHub para o Apollo</div>
             {GITHUB_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -223,16 +222,16 @@ export function InstanceGithubConfigForm(props: Props) {
                   loading={isSubmitting}
                   disabled={!isDirty}
                 >
-                  {isSubmitting ? "Saving" : "Save changes"}
+                  {isSubmitting ? "Salvando" : "Salvar alterações"}
                 </Button>
                 <Link href="/authentication" className={getButtonStyling("secondary", "lg")} onClick={handleGoBack}>
-                  Go back
+                  Voltar
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-span-2 flex flex-col gap-y-6 md:col-span-1">
-            <div className="pt-2 text-18 font-medium">Apollo-provided details for GitHub</div>
+            <div className="pt-2 text-18 font-medium">Dados do Apollo para o GitHub</div>
 
             <div className="flex flex-col gap-y-4">
               {/* common service details */}

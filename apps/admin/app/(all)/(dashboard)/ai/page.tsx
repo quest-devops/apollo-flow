@@ -25,8 +25,9 @@ const InstanceAIPage = observer(function InstanceAIPage(_props: Route.ComponentP
   return (
     <PageWrapper
       header={{
-        title: "AI features for all your workspaces",
-        description: "Configure your AI API credentials so Apollo AI features are turned on for all your workspaces.",
+        title: "Recursos de IA para todos os seus workspaces",
+        description:
+          "Configure as credenciais da API de IA para ativar os recursos de IA do Apollo em todos os seus workspaces.",
       }}
     >
       {formattedConfig ? (
@@ -45,6 +46,6 @@ const InstanceAIPage = observer(function InstanceAIPage(_props: Route.ComponentP
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "Artificial Intelligence Settings - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Inteligência artificial - Apollo Admin" }];
 
 export default InstanceAIPage;

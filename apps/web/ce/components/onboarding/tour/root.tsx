@@ -37,42 +37,42 @@ const TOUR_STEPS: {
 }[] = [
   {
     key: "work-items",
-    title: "Plan with work items",
+    title: "Planeje com itens",
     description:
-      "The work item is the building block of Apollo. Most concepts in Apollo are either associated with work items and their properties.",
+      "O item é o bloco de construção do Apollo. A maioria dos conceitos do Apollo está associada a itens e às suas propriedades.",
     image: IssuesTour,
     nextStep: "cycles",
   },
   {
     key: "cycles",
-    title: "Move with cycles",
+    title: "Avance com ciclos",
     description:
-      "Cycles help you and your team to progress faster, similar to the sprints commonly used in agile development.",
+      "Os ciclos ajudam você e seu time a progredir mais rápido, como os sprints usados no desenvolvimento ágil.",
     image: CyclesTour,
     prevStep: "work-items",
     nextStep: "modules",
   },
   {
     key: "modules",
-    title: "Break into modules",
-    description: "Modules break your big thing into Projects or Features, to help you organize better.",
+    title: "Divida em módulos",
+    description: "Módulos quebram algo grande em projetos ou funcionalidades, para ajudar você a se organizar melhor.",
     image: ModulesTour,
     prevStep: "cycles",
     nextStep: "views",
   },
   {
     key: "views",
-    title: "Views",
+    title: "Visualizações",
     description:
-      "Create custom filters to display only the work items that matter to you. Save and share your filters in just a few clicks.",
+      "Crie filtros personalizados para exibir só os itens que importam para você. Salve e compartilhe seus filtros em poucos cliques.",
     image: ViewsTour,
     prevStep: "modules",
     nextStep: "pages",
   },
   {
     key: "pages",
-    title: "Document with pages",
-    description: "Use Pages to quickly jot down work items when you're in a meeting or starting a day.",
+    title: "Documente com páginas",
+    description: "Use as Páginas para anotar itens rapidamente numa reunião ou no começo do dia.",
     image: PagesTour,
     prevStep: "views",
   },
@@ -99,11 +99,11 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
             </div>
             <div className="flex flex-col overflow-y-auto p-6">
               <h3 className="font-semibold sm:text-18">
-                Welcome to Apollo, {currentUser?.first_name} {currentUser?.last_name}
+                Bem-vindo ao Apollo, {currentUser?.first_name} {currentUser?.last_name}
               </h3>
               <p className="mt-3 text-13 text-secondary">
-                We{"'"}re glad that you decided to try out Apollo. You can now manage your projects with ease. Get
-                started by creating a project.
+                Que bom ter você no Apollo. Agora você pode gerenciar seus projetos com facilidade. Comece criando um
+                projeto.
               </p>
               <div className="flex h-full items-end">
                 <div className="mt-12 flex items-center gap-6">
@@ -113,7 +113,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                       setStep("work-items");
                     }}
                   >
-                    Take a Product Tour
+                    Fazer o tour do produto
                   </Button>
                   <button
                     type="button"
@@ -122,7 +122,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                       onComplete();
                     }}
                   >
-                    No thanks, I will explore it myself
+                    Não, obrigado — vou explorar por conta própria
                   </button>
                 </div>
               </div>
@@ -154,12 +154,12 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                 <div className="flex items-center gap-4">
                   {currentStep?.prevStep && (
                     <Button variant="secondary" onClick={() => setStep(currentStep.prevStep ?? "welcome")}>
-                      Back
+                      Voltar
                     </Button>
                   )}
                   {currentStep?.nextStep && (
                     <Button variant="primary" onClick={() => setStep(currentStep.nextStep ?? "work-items")}>
-                      Next
+                      Avançar
                     </Button>
                   )}
                 </div>
@@ -171,7 +171,7 @@ export const TourRoot = observer(function TourRoot(props: TOnboardingTourProps) 
                       toggleCreateProjectModal(true);
                     }}
                   >
-                    Create your first project
+                    Criar seu primeiro projeto
                   </Button>
                 )}
               </div>

@@ -46,8 +46,8 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
       .then(() =>
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: "Success",
-          message: "Settings updated successfully",
+          title: "Sucesso",
+          message: "Configurações atualizadas com sucesso",
         })
       )
       .catch((err) => console.error(err));
@@ -56,15 +56,15 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
   return (
     <div className="space-y-8">
       <div className="space-y-4">
-        <div className="text-16 font-medium text-primary">Instance details</div>
+        <div className="text-16 font-medium text-primary">Detalhes da instância</div>
         <div className="grid-col grid w-full grid-cols-1 items-center justify-between gap-8 md:grid-cols-2 lg:grid-cols-3">
           <ControllerInput
             key="instance_name"
             name="instance_name"
             control={control}
             type="text"
-            label="Name of instance"
-            placeholder="Instance name"
+            label="Nome da instância"
+            placeholder="Nome da instância"
             error={Boolean(errors.instance_name)}
             required
           />
@@ -76,7 +76,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
               name="email"
               type="email"
               value={instanceAdmins[0]?.user_detail?.email ?? ""}
-              placeholder="Admin email"
+              placeholder="E-mail do administrador"
               className="w-full cursor-not-allowed !text-placeholder"
               autoComplete="on"
               disabled
@@ -84,7 +84,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
           </div>
 
           <div className="flex flex-col gap-1">
-            <h4 className="text-13 text-tertiary">Instance ID</h4>
+            <h4 className="text-13 text-tertiary">ID da instância</h4>
             <Input
               id="instance_id"
               name="instance_id"
@@ -98,7 +98,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
       </div>
 
       <div className="space-y-6">
-        <div className="border-b border-subtle pb-1.5 text-16 font-medium text-primary">Telemetry</div>
+        <div className="border-b border-subtle pb-1.5 text-16 font-medium text-primary">Telemetria</div>
         <div className="flex items-center gap-14">
           <div className="flex grow items-center gap-4">
             <div className="shrink-0">
@@ -107,17 +107,19 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
               </div>
             </div>
             <div className="grow">
-              <div className="text-13 leading-5 font-medium text-primary">Let Apollo collect anonymous usage data</div>
+              <div className="text-13 leading-5 font-medium text-primary">
+                Permitir que o Apollo colete dados anônimos de uso
+              </div>
               <div className="text-11 leading-5 font-regular text-tertiary">
-                No PII is collected.This anonymized data is used to understand how you use Apollo and build new features
-                in line with{" "}
+                Nenhum dado pessoal é coletado. Esses dados anonimizados servem para entender como você usa o Apollo e
+                orientar novas funcionalidades, conforme{" "}
                 <a
                   href="https://apollosolution.com.br"
                   target="_blank"
                   className="text-accent-primary hover:underline"
                   rel="noreferrer"
                 >
-                  our Telemetry Policy.
+                  nossa Política de Telemetria.
                 </a>
               </div>
             </div>
@@ -143,7 +145,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
           }}
           loading={isSubmitting}
         >
-          {isSubmitting ? "Saving" : "Save changes"}
+          {isSubmitting ? "Salvando" : "Salvar alterações"}
         </Button>
       </div>
     </div>

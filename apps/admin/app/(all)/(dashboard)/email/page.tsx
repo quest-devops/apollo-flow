@@ -34,14 +34,14 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
         await disableEmail();
         setIsSMTPEnabled(false);
         setToast({
-          title: "Email feature disabled",
-          message: "Email feature has been disabled",
+          title: "Envio de e-mail desativado",
+          message: "O envio de e-mail foi desativado",
           type: TOAST_TYPE.SUCCESS,
         });
       } catch (_error) {
         setToast({
-          title: "Error disabling email",
-          message: "Failed to disable email feature. Please try again.",
+          title: "Erro ao desativar e-mail",
+          message: "Não foi possível desativar o envio de e-mail. Tente novamente.",
           type: TOAST_TYPE.ERROR,
         });
       } finally {
@@ -60,13 +60,15 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
   return (
     <PageWrapper
       header={{
-        title: "Secure emails from your own instance",
+        title: "E-mails seguros a partir da sua própria instância",
         description: (
           <>
             O Apollo pode enviar e-mails úteis para você e seus usuários a partir da sua própria instância.
             <div className="text-13 font-regular text-tertiary">
-              Set it up below and please test your settings before you save them.&nbsp;
-              <span className="text-danger-primary">Misconfigs can lead to email bounces and errors.</span>
+              Configure abaixo e teste as configurações antes de salvar.&nbsp;
+              <span className="text-danger-primary">
+                Configurações incorretas podem causar devoluções e erros de e-mail.
+              </span>
             </div>
           </>
         ),
@@ -98,6 +100,6 @@ const InstanceEmailPage = observer(function InstanceEmailPage(_props: Route.Comp
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "Email Settings - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Configurações de e-mail - Apollo Admin" }];
 
 export default InstanceEmailPage;

@@ -20,9 +20,9 @@ function GeneralPage() {
   return (
     <PageWrapper
       header={{
-        title: "General settings",
+        title: "Configurações gerais",
         description:
-          "Change the name of your instance and instance admin e-mail addresses. Enable or disable telemetry in your instance.",
+          "Altere o nome da instância e veja o e-mail do administrador. Ative ou desative a telemetria da instância.",
       }}
     >
       {instance && instanceAdmins && <GeneralConfigurationForm instance={instance} instanceAdmins={instanceAdmins} />}
@@ -30,6 +30,6 @@ function GeneralPage() {
   );
 }
 
-export const meta: Route.MetaFunction = () => [{ title: "General Settings - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Configurações gerais - Apollo Admin" }];
 
 export default observer(GeneralPage);

@@ -295,9 +295,9 @@ export const WORKSPACE_DEFAULT_SEARCH_RESULT: IWorkspaceSearchResults = {
 };
 
 export const USE_CASES = [
-  "Plan and track product roadmaps",
-  "Manage engineering sprints",
-  "Coordinate cross-functional projects",
-  "Replace our current tool",
-  "Just exploring",
+  "Planejar e acompanhar roadmaps de produto",
+  "Gerenciar sprints de engenharia",
+  "Coordenar projetos entre equipes",
+  "Substituir nossa ferramenta atual",
+  "Só explorando",
 ];

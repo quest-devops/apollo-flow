@@ -49,14 +49,14 @@ const InstanceGithubAuthenticationPage = observer(function InstanceGithubAuthent
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Salvando configuração",
       success: {
-        title: "Configuration saved",
-        message: () => `GitHub authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Configuração salva",
+        message: () => `A autenticação com GitHub está ${value === "1" ? "ativa" : "desativada"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Erro",
+        message: () => "Falha ao salvar a configuração",
       },
     });
 
@@ -77,7 +77,7 @@ const InstanceGithubAuthenticationPage = observer(function InstanceGithubAuthent
       customHeader={
         <AuthenticationMethodCard
           name="GitHub"
-          description="Allow members to login or sign up to Apollo with their GitHub accounts."
+          description="Permita que membros entrem ou se cadastrem no Apollo com suas contas GitHub."
           icon={
             <img
               src={resolveGeneralTheme(resolvedTheme) === "dark" ? githubDarkModeImage : githubLightModeImage}
@@ -116,6 +116,6 @@ const InstanceGithubAuthenticationPage = observer(function InstanceGithubAuthent
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "GitHub Authentication - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Autenticação com GitHub - Apollo Admin" }];
 
 export default InstanceGithubAuthenticationPage;

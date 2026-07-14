@@ -114,8 +114,8 @@ export function InstanceSignInForm() {
       <div className="mt-10 flex w-full flex-grow flex-col items-center justify-center py-6">
         <div className="relative flex w-full max-w-[22.5rem] flex-col gap-6">
           <FormHeader
-            heading="Manage your Apollo instance"
-            subHeading="Configure instance-wide settings to secure your instance"
+            heading="Administre sua instância Apollo"
+            subHeading="Configure as opções globais da instância para mantê-la segura"
           />
           <form
             className="space-y-4"
@@ -143,7 +143,7 @@ export function InstanceSignInForm() {
                 name="email"
                 type="email"
                 inputSize="md"
-                placeholder="name@company.com"
+                placeholder="nome@empresa.com.br"
                 value={formData.email}
                 onChange={(e) => handleFormChange("email", e.target.value)}
                 autoComplete="off"
@@ -153,7 +153,7 @@ export function InstanceSignInForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="password">
-                Password <span className="text-danger-primary">*</span>
+                Senha <span className="text-danger-primary">*</span>
               </label>
               <div className="relative">
                 <Input
@@ -162,7 +162,7 @@ export function InstanceSignInForm() {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   inputSize="md"
-                  placeholder="Enter your password"
+                  placeholder="Digite sua senha"
                   value={formData.password}
                   onChange={(e) => handleFormChange("password", e.target.value)}
                   autoComplete="off"
@@ -188,7 +188,7 @@ export function InstanceSignInForm() {
             </div>
             <div className="py-2">
               <Button type="submit" size="xl" className="w-full" disabled={isButtonDisabled}>
-                {isSubmitting ? <Spinner height="20px" width="20px" /> : "Sign in"}
+                {isSubmitting ? <Spinner height="20px" width="20px" /> : "Entrar"}
               </Button>
             </div>
           </form>

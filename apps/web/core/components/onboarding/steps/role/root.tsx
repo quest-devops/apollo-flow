@@ -24,13 +24,13 @@ type Props = {
 };
 
 const ROLES = [
-  { id: "product-manager", label: "Product Manager", icon: Box },
-  { id: "engineering-manager", label: "Engineering Manager", icon: ViewsIcon },
+  { id: "product-manager", label: "Gerente de Produto", icon: Box },
+  { id: "engineering-manager", label: "Gerente de Engenharia", icon: ViewsIcon },
   { id: "designer", label: "Designer", icon: PenTool },
-  { id: "developer", label: "Developer", icon: Monitor },
-  { id: "founder-executive", label: "Founder/Executive", icon: Rocket },
-  { id: "operations-manager", label: "Operations Manager", icon: RefreshCw },
-  { id: "others", label: "Others", icon: Box },
+  { id: "developer", label: "Desenvolvedor(a)", icon: Monitor },
+  { id: "founder-executive", label: "Fundador(a)/Executivo(a)", icon: Rocket },
+  { id: "operations-manager", label: "Gerente de Operações", icon: RefreshCw },
+  { id: "others", label: "Outros", icon: Box },
 ];
 
 const defaultValues = {
@@ -65,14 +65,14 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
       ]);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Success",
-        message: "Profile setup completed!",
+        title: "Sucesso",
+        message: "Configuração do perfil concluída!",
       });
     } catch {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error",
-        message: "Profile setup failed. Please try again!",
+        title: "Erro",
+        message: "Não foi possível concluir a configuração do perfil. Tente novamente!",
       });
     }
   };
@@ -92,15 +92,15 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
       {/* Header */}
-      <CommonOnboardingHeader title="What's your role?" description="Let's set up Apollo for how you work." />
+      <CommonOnboardingHeader title="Qual é o seu papel?" description="Vamos configurar o Apollo para o seu jeito de trabalhar." />
       {/* Role Selection */}
       <div className="flex flex-col gap-3">
-        <p className="text-body-sm-semibold text-placeholder">Select one</p>
+        <p className="text-body-sm-semibold text-placeholder">Selecione uma opção</p>
         <Controller
           control={control}
           name="role"
           rules={{
-            required: "This field is required",
+            required: "Este campo é obrigatório",
           }}
           render={({ field: { value, onChange } }) => (
             <div className="flex flex-col gap-3">
@@ -146,10 +146,10 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
       {/* Action Buttons */}
       <div className="space-y-3">
         <Button variant="primary" type="submit" className="w-full" size="xl" disabled={isButtonDisabled}>
-          Continue
+          Continuar
         </Button>
         <Button variant="ghost" onClick={handleSkip} className="w-full text-tertiary" size="xl">
-          Skip
+          Pular
         </Button>
       </div>
     </form>

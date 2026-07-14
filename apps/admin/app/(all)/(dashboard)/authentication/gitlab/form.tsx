@@ -61,7 +61,7 @@ export function InstanceGitlabConfigForm(props: Props) {
       label: "Host",
       description: (
         <>
-          This is either https://gitlab.com or the <CodeBlock>domain.tld</CodeBlock> where you host GitLab.
+          É https://gitlab.com ou o <CodeBlock>dominio.tld</CodeBlock> onde você hospeda o GitLab.
         </>
       ),
       placeholder: "https://gitlab.com",
@@ -74,7 +74,7 @@ export function InstanceGitlabConfigForm(props: Props) {
       label: "Application ID",
       description: (
         <>
-          Get this from your{" "}
+          Obtenha isto nas{" "}
           <a
             tabIndex={-1}
             href="https://docs.gitlab.com/ee/integration/oauth_provider.html"
@@ -82,7 +82,7 @@ export function InstanceGitlabConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitLab OAuth application settings
+            configurações do aplicativo OAuth do GitLab
           </a>
           .
         </>
@@ -97,7 +97,7 @@ export function InstanceGitlabConfigForm(props: Props) {
       label: "Secret",
       description: (
         <>
-          The client secret is also found in your{" "}
+          O Client secret também fica nas{" "}
           <a
             tabIndex={-1}
             href="https://docs.gitlab.com/ee/integration/oauth_provider.html"
@@ -105,7 +105,7 @@ export function InstanceGitlabConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitLab OAuth application settings
+            configurações do aplicativo OAuth do GitLab
           </a>
           .
         </>
@@ -128,7 +128,7 @@ export function InstanceGitlabConfigForm(props: Props) {
       url: `${originURL}/auth/gitlab/callback/`,
       description: (
         <>
-          We will auto-generate this. Paste this into the <CodeBlock darkerShade>Redirect URI</CodeBlock> field of your{" "}
+          Geramos isto automaticamente. Cole no campo <CodeBlock darkerShade>Redirect URI</CodeBlock> do seu{" "}
           <a
             tabIndex={-1}
             href="https://docs.gitlab.com/ee/integration/oauth_provider.html"
@@ -136,7 +136,7 @@ export function InstanceGitlabConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            GitLab OAuth application
+            aplicativo OAuth do GitLab
           </a>
           .
         </>
@@ -151,8 +151,8 @@ export function InstanceGitlabConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Done!",
-        message: "Your GitLab authentication is configured. You should test it now.",
+        title: "Pronto!",
+        message: "A autenticação com GitLab foi configurada. Recomendamos testá-la agora.",
       });
       reset({
         GITLAB_HOST: response.find((item) => item.key === "GITLAB_HOST")?.value,
@@ -182,7 +182,7 @@ export function InstanceGitlabConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">GitLab-provided details for Apollo</div>
+            <div className="pt-2.5 text-18 font-medium">Dados do GitLab para o Apollo</div>
             {GITLAB_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -206,17 +206,17 @@ export function InstanceGitlabConfigForm(props: Props) {
                   loading={isSubmitting}
                   disabled={!isDirty}
                 >
-                  {isSubmitting ? "Saving" : "Save changes"}
+                  {isSubmitting ? "Salvando" : "Salvar alterações"}
                 </Button>
                 <Link href="/authentication" className={getButtonStyling("secondary", "lg")} onClick={handleGoBack}>
-                  Go back
+                  Voltar
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-span-2 md:col-span-1">
             <div className="flex flex-col gap-y-4 rounded-lg bg-layer-3 px-6 pt-1.5 pb-4">
-              <div className="pt-2 text-18 font-medium">Apollo-provided details for GitLab</div>
+              <div className="pt-2 text-18 font-medium">Dados do Apollo para o GitLab</div>
               {GITLAB_SERVICE_FIELD.map((field) => (
                 <CopyField key={field.key} label={field.label} url={field.url} description={field.description} />
               ))}

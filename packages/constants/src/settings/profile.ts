@@ -8,8 +8,8 @@
 import type { TProfileSettingsTabs } from "@plane/types";
 
 export enum PROFILE_SETTINGS_CATEGORY {
-  YOUR_PROFILE = "your profile",
-  DEVELOPER = "developer",
+  YOUR_PROFILE = "seu perfil",
+  DEVELOPER = "desenvolvedor",
 }
 
 export const PROFILE_SETTINGS_CATEGORIES: PROFILE_SETTINGS_CATEGORY[] = [

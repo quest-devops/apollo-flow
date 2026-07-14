@@ -41,14 +41,14 @@ const InstanceApolloAuthenticationPage = observer(function InstanceApolloAuthent
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Salvando configuração",
       success: {
-        title: "Configuration saved",
-        message: () => `Apollo authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Configuração salva",
+        message: () => `A autenticação Apollo está ${value === "1" ? "ativa" : "desativada"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Erro",
+        message: () => "Falha ao salvar a configuração",
       },
     });
 
@@ -69,7 +69,7 @@ const InstanceApolloAuthenticationPage = observer(function InstanceApolloAuthent
       customHeader={
         <AuthenticationMethodCard
           name="Apollo Autentikey"
-          description="Authenticate with your Apollo Autentikey account (OIDC)."
+          description="Autentique com sua conta Apollo Autentikey (OIDC)."
           icon={<ShieldCheck className="h-6 w-6 p-0.5 text-tertiary" />}
           config={
             <ToggleSwitch
@@ -100,6 +100,6 @@ const InstanceApolloAuthenticationPage = observer(function InstanceApolloAuthent
     </PageWrapper>
   );
 });
-export const meta: Route.MetaFunction = () => [{ title: "Apollo Authentication - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Autenticação Apollo - Apollo Admin" }];
 
 export default InstanceApolloAuthenticationPage;

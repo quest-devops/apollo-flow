@@ -61,7 +61,7 @@ export function InstanceGoogleConfigForm(props: Props) {
       label: "Client ID",
       description: (
         <>
-          Your client ID lives in your Google API Console.{" "}
+          Seu Client ID fica no Console de APIs do Google.{" "}
           <a
             tabIndex={-1}
             href="https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow#creatingcred"
@@ -69,7 +69,7 @@ export function InstanceGoogleConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            Learn more
+            Saiba mais
           </a>
         </>
       ),
@@ -83,7 +83,7 @@ export function InstanceGoogleConfigForm(props: Props) {
       label: "Client secret",
       description: (
         <>
-          Your client secret should also be in your Google API Console.{" "}
+          Seu Client secret também fica no Console de APIs do Google.{" "}
           <a
             tabIndex={-1}
             href="https://developers.google.com/identity/oauth2/web/guides/get-google-api-clientid"
@@ -91,7 +91,7 @@ export function InstanceGoogleConfigForm(props: Props) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            Learn more
+            Saiba mais
           </a>
         </>
       ),
@@ -113,15 +113,15 @@ export function InstanceGoogleConfigForm(props: Props) {
       url: originURL,
       description: (
         <p>
-          We will auto-generate this. Paste this into your{" "}
-          <CodeBlock darkerShade>Authorized JavaScript origins</CodeBlock> field. For this OAuth client{" "}
+          Geramos isto automaticamente. Cole no campo <CodeBlock darkerShade>Authorized JavaScript origins</CodeBlock>{" "}
+          do seu cliente OAuth,{" "}
           <a
             href="https://console.cloud.google.com/apis/credentials/oauthclient"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            here.
+            aqui.
           </a>
         </p>
       ),
@@ -135,15 +135,15 @@ export function InstanceGoogleConfigForm(props: Props) {
       url: `${originURL}/auth/google/callback/`,
       description: (
         <p>
-          We will auto-generate this. Paste this into your <CodeBlock darkerShade>Authorized Redirect URI</CodeBlock>{" "}
-          field. For this OAuth client{" "}
+          Geramos isto automaticamente. Cole no campo <CodeBlock darkerShade>Authorized Redirect URI</CodeBlock> do seu
+          cliente OAuth,{" "}
           <a
             href="https://console.cloud.google.com/apis/credentials/oauthclient"
             target="_blank"
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            here.
+            aqui.
           </a>
         </p>
       ),
@@ -157,8 +157,8 @@ export function InstanceGoogleConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Done!",
-        message: "Your Google authentication is configured. You should test it now.",
+        title: "Pronto!",
+        message: "A autenticação com Google foi configurada. Recomendamos testá-la agora.",
       });
       reset({
         GOOGLE_CLIENT_ID: response.find((item) => item.key === "GOOGLE_CLIENT_ID")?.value,
@@ -187,7 +187,7 @@ export function InstanceGoogleConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">Google-provided details for Apollo</div>
+            <div className="pt-2.5 text-18 font-medium">Dados do Google para o Apollo</div>
             {GOOGLE_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -211,16 +211,16 @@ export function InstanceGoogleConfigForm(props: Props) {
                   loading={isSubmitting}
                   disabled={!isDirty}
                 >
-                  {isSubmitting ? "Saving" : "Save changes"}
+                  {isSubmitting ? "Salvando" : "Salvar alterações"}
                 </Button>
                 <Link href="/authentication" className={getButtonStyling("secondary", "lg")} onClick={handleGoBack}>
-                  Go back
+                  Voltar
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-span-2 flex flex-col gap-y-6 md:col-span-1">
-            <div className="pt-2 text-18 font-medium">Apollo-provided details for Google</div>
+            <div className="pt-2 text-18 font-medium">Dados do Apollo para o Google</div>
 
             <div className="flex flex-col gap-y-4">
               {/* common service details */}

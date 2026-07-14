@@ -97,7 +97,7 @@ export function InstanceSetupForm() {
   // campo; os demais viram banner via authErrorHandler (dicionário central de mensagens).
   const isPasswordError = !!errorCode && PASSWORD_INLINE_ERROR_CODES.includes(errorCode);
   const passwordErrorMessage = isPasswordError
-    ? "Password too weak. Please choose a stronger, less common password."
+    ? "Senha muito fraca. Escolha uma senha mais forte e menos comum."
     : undefined;
   const bannerError = useMemo(
     () => (errorCode && !isPasswordError ? authErrorHandler(errorCode as EAuthErrorCodes, emailParam) : undefined),
@@ -127,8 +127,8 @@ export function InstanceSetupForm() {
       <div className="mt-10 flex w-full flex-grow flex-col items-center justify-center py-6">
         <div className="relative flex w-full max-w-[22.5rem] flex-col gap-6">
           <FormHeader
-            heading="Setup your Apollo Instance"
-            subHeading="Post setup you will be able to manage this Apollo instance."
+            heading="Configure sua instância Apollo"
+            subHeading="Depois do setup você poderá administrar esta instância Apollo."
           />
           {bannerError?.message && <Banner type="error" message={bannerError.message} />}
           <form
@@ -144,7 +144,7 @@ export function InstanceSetupForm() {
             <div className="flex flex-col items-center gap-4 sm:flex-row">
               <div className="w-full space-y-1">
                 <label className="text-13 font-medium text-tertiary" htmlFor="first_name">
-                  First name <span className="text-danger-primary">*</span>
+                  Nome <span className="text-danger-primary">*</span>
                 </label>
                 <Input
                   className="w-full border border-subtle !bg-surface-1 placeholder:text-placeholder"
@@ -152,7 +152,7 @@ export function InstanceSetupForm() {
                   name="first_name"
                   type="text"
                   inputSize="md"
-                  placeholder="Wilber"
+                  placeholder="Alberto"
                   value={formData.first_name}
                   onChange={(e) => {
                     const validation = validatePersonName(e.target.value);
@@ -167,7 +167,7 @@ export function InstanceSetupForm() {
               </div>
               <div className="w-full space-y-1">
                 <label className="text-13 font-medium text-tertiary" htmlFor="last_name">
-                  Last name <span className="text-danger-primary">*</span>
+                  Sobrenome <span className="text-danger-primary">*</span>
                 </label>
                 <Input
                   className="w-full border border-subtle !bg-surface-1 placeholder:text-placeholder"
@@ -175,7 +175,7 @@ export function InstanceSetupForm() {
                   name="last_name"
                   type="text"
                   inputSize="md"
-                  placeholder="Wright"
+                  placeholder="Santos"
                   value={formData.last_name}
                   onChange={(e) => {
                     const validation = validatePersonName(e.target.value);
@@ -199,7 +199,7 @@ export function InstanceSetupForm() {
                 name="email"
                 type="email"
                 inputSize="md"
-                placeholder="name@company.com"
+                placeholder="nome@empresa.com.br"
                 value={formData.email}
                 onChange={(e) => handleFormChange("email", e.target.value)}
                 autoComplete="off"
@@ -208,7 +208,7 @@ export function InstanceSetupForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="company_name">
-                Company name <span className="text-danger-primary">*</span>
+                Nome da empresa <span className="text-danger-primary">*</span>
               </label>
               <Input
                 className="w-full border border-subtle !bg-surface-1 placeholder:text-placeholder"
@@ -216,7 +216,7 @@ export function InstanceSetupForm() {
                 name="company_name"
                 type="text"
                 inputSize="md"
-                placeholder="Company name"
+                placeholder="Nome da empresa"
                 value={formData.company_name}
                 onChange={(e) => {
                   const validation = validateCompanyName(e.target.value, false);
@@ -230,7 +230,7 @@ export function InstanceSetupForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="password">
-                Set a password <span className="text-danger-primary">*</span>
+                Defina uma senha <span className="text-danger-primary">*</span>
               </label>
               <div className="relative">
                 <Input
@@ -239,7 +239,7 @@ export function InstanceSetupForm() {
                   name="password"
                   type={showPassword.password ? "text" : "password"}
                   inputSize="md"
-                  placeholder="New password"
+                  placeholder="Nova senha"
                   value={formData.password}
                   onChange={(e) => handleFormChange("password", e.target.value)}
                   hasError={isPasswordError}
@@ -273,7 +273,7 @@ export function InstanceSetupForm() {
 
             <div className="w-full space-y-1">
               <label className="text-13 font-medium text-tertiary" htmlFor="confirm_password">
-                Confirm password <span className="text-danger-primary">*</span>
+                Confirme a senha <span className="text-danger-primary">*</span>
               </label>
               <div className="relative">
                 <Input
@@ -283,7 +283,7 @@ export function InstanceSetupForm() {
                   inputSize="md"
                   value={formData.confirm_password}
                   onChange={(e) => handleFormChange("confirm_password", e.target.value)}
-                  placeholder="Confirm password"
+                  placeholder="Confirme a senha"
                   className="w-full border border-subtle !bg-surface-1 pr-12 placeholder:text-placeholder"
                   onFocus={() => setIsRetryPasswordInputFocused(true)}
                   onBlur={() => setIsRetryPasswordInputFocused(false)}
@@ -312,7 +312,7 @@ export function InstanceSetupForm() {
               {!!formData.confirm_password &&
                 formData.password !== formData.confirm_password &&
                 renderPasswordMatchError && (
-                  <span className="text-13 text-danger-primary">Passwords don{"'"}t match</span>
+                  <span className="text-13 text-danger-primary">As senhas não coincidem</span>
                 )}
             </div>
 
@@ -327,7 +327,7 @@ export function InstanceSetupForm() {
                 />
               </div>
               <label className="cursor-pointer text-13 font-medium text-tertiary" htmlFor="is_telemetry_enabled">
-                Allow Apollo to anonymously collect usage events.{" "}
+                Permitir que o Apollo colete eventos de uso de forma anônima.{" "}
                 <a
                   tabIndex={-1}
                   href="https://apollosolution.com.br"
@@ -335,14 +335,14 @@ export function InstanceSetupForm() {
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:text-blue-600 flex-shrink-0 text-13 font-medium"
                 >
-                  See More
+                  Saiba mais
                 </a>
               </label>
             </div>
 
             <div className="py-2">
               <Button type="submit" size="xl" className="w-full" disabled={isButtonDisabled}>
-                {isSubmitting ? <Spinner height="20px" width="20px" /> : "Continue"}
+                {isSubmitting ? <Spinner height="20px" width="20px" /> : "Continuar"}
               </Button>
             </div>
           </form>

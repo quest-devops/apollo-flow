@@ -43,14 +43,14 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Salvando configuração",
       success: {
-        title: "Configuration saved",
-        message: () => `GitLab authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Configuração salva",
+        message: () => `A autenticação com GitLab está ${value === "1" ? "ativa" : "desativada"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Erro",
+        message: () => "Falha ao salvar a configuração",
       },
     });
 
@@ -68,7 +68,7 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
       customHeader={
         <AuthenticationMethodCard
           name="GitLab"
-          description="Allow members to login or sign up to Apollo with their GitLab accounts."
+          description="Permita que membros entrem ou se cadastrem no Apollo com suas contas GitLab."
           icon={<img src={GitlabLogo} height={24} width={24} alt="GitLab Logo" />}
           config={
             <ToggleSwitch
@@ -104,6 +104,6 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "GitLab Authentication - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Autenticação com GitLab - Apollo Admin" }];
 
 export default InstanceGitlabAuthenticationPage;

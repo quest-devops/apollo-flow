@@ -62,7 +62,7 @@ export function InstanceApolloConfigForm(props: Props) {
       label: "Issuer URL",
       description: (
         <>
-          The OIDC issuer URL of your Apollo Autentikey provider. Discovery happens at{" "}
+          A Issuer URL (OIDC) do seu provedor Apollo Autentikey. O discovery acontece em{" "}
           <CodeBlock darkerShade>&lt;issuer&gt;/.well-known/openid-configuration</CodeBlock>.
         </>
       ),
@@ -74,7 +74,7 @@ export function InstanceApolloConfigForm(props: Props) {
       key: "APOLLO_CLIENT_ID",
       type: "text",
       label: "Client ID",
-      description: <>You will get this from your Apollo Autentikey OAuth2/OIDC provider settings.</>,
+      description: <>Você obtém isto nas configurações do seu provedor OAuth2/OIDC Apollo Autentikey.</>,
       placeholder: "70a44354520df8bd9bcd",
       error: Boolean(errors.APOLLO_CLIENT_ID),
       required: true,
@@ -83,7 +83,7 @@ export function InstanceApolloConfigForm(props: Props) {
       key: "APOLLO_CLIENT_SECRET",
       type: "password",
       label: "Client secret",
-      description: <>Your client secret is also found in your Apollo Autentikey OAuth2/OIDC provider settings.</>,
+      description: <>Seu Client secret também fica nas configurações do seu provedor OAuth2/OIDC Apollo Autentikey.</>,
       placeholder: "9b0050f94ec1b744e32ce79ea4ffacd40d4119cb",
       error: Boolean(errors.APOLLO_CLIENT_SECRET),
       required: true,
@@ -91,11 +91,11 @@ export function InstanceApolloConfigForm(props: Props) {
     {
       key: "APOLLO_WORKSPACE_SLUG",
       type: "text",
-      label: "Workspace slug",
+      label: "Slug do workspace",
       description: (
         <>
-          Slug of the workspace users are added to on every Apollo login, with the role from the identity provider
-          (role claim). Leave empty to skip role sync.
+          Slug do workspace ao qual os usuários são adicionados a cada login no Apollo, com o papel vindo do provedor
+          de identidade (claim de role). Deixe vazio para não sincronizar papéis.
         </>
       ),
       placeholder: "apollo",
@@ -116,8 +116,8 @@ export function InstanceApolloConfigForm(props: Props) {
       url: `${originURL}/auth/apollo/callback/`,
       description: (
         <>
-          We will auto-generate this. Paste this into the <CodeBlock darkerShade>Redirect URIs</CodeBlock> field of
-          your Apollo Autentikey OAuth2/OIDC provider.
+          Geramos isto automaticamente. Cole no campo <CodeBlock darkerShade>Redirect URIs</CodeBlock> do seu provedor
+          OAuth2/OIDC Apollo Autentikey.
         </>
       ),
     },
@@ -130,8 +130,8 @@ export function InstanceApolloConfigForm(props: Props) {
       const response = await updateInstanceConfigurations(payload);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Done!",
-        message: "Your Apollo authentication is configured. You should test it now.",
+        title: "Pronto!",
+        message: "A autenticação Apollo foi configurada. Recomendamos testá-la agora.",
       });
       reset({
         APOLLO_ISSUER_URL: response.find((item) => item.key === "APOLLO_ISSUER_URL")?.value,
@@ -162,7 +162,7 @@ export function InstanceApolloConfigForm(props: Props) {
       <div className="flex flex-col gap-8">
         <div className="grid w-full grid-cols-2 gap-x-12 gap-y-8">
           <div className="col-span-2 flex flex-col gap-y-4 pt-1 md:col-span-1">
-            <div className="pt-2.5 text-18 font-medium">Apollo Autentikey-provided details for Apollo</div>
+            <div className="pt-2.5 text-18 font-medium">Dados do Apollo Autentikey para o Apollo</div>
             {APOLLO_FORM_FIELDS.map((field) => (
               <ControllerInput
                 key={field.key}
@@ -186,17 +186,17 @@ export function InstanceApolloConfigForm(props: Props) {
                   loading={isSubmitting}
                   disabled={!isDirty}
                 >
-                  {isSubmitting ? "Saving" : "Save changes"}
+                  {isSubmitting ? "Salvando" : "Salvar alterações"}
                 </Button>
                 <Link href="/authentication" className={getButtonStyling("secondary", "lg")} onClick={handleGoBack}>
-                  Go back
+                  Voltar
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-span-2 md:col-span-1">
             <div className="flex flex-col gap-y-4 rounded-lg bg-layer-1 px-6 pt-1.5 pb-4">
-              <div className="pt-2 text-18 font-medium">Apollo-provided details for Apollo Autentikey</div>
+              <div className="pt-2 text-18 font-medium">Dados do Apollo para o Apollo Autentikey</div>
               {APOLLO_SERVICE_FIELD.map((field) => (
                 <CopyField key={field.key} label={field.label} url={field.url} description={field.description} />
               ))}

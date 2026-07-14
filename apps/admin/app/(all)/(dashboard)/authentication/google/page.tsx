@@ -43,14 +43,14 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
     const updateConfigPromise = updateInstanceConfigurations(payload);
 
     setPromiseToast(updateConfigPromise, {
-      loading: "Saving Configuration",
+      loading: "Salvando configuração",
       success: {
-        title: "Configuration saved",
-        message: () => `Google authentication is now ${value === "1" ? "active" : "disabled"}.`,
+        title: "Configuração salva",
+        message: () => `A autenticação com Google está ${value === "1" ? "ativa" : "desativada"}.`,
       },
       error: {
-        title: "Error",
-        message: () => "Failed to save configuration",
+        title: "Erro",
+        message: () => "Falha ao salvar a configuração",
       },
     });
 
@@ -68,8 +68,7 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
       customHeader={
         <AuthenticationMethodCard
           name="Google"
-          description="Allow members to login or sign up to Apollo with their Google
-            accounts."
+          description="Permita que membros entrem ou se cadastrem no Apollo com suas contas Google."
           icon={<img src={GoogleLogo} height={24} width={24} alt="Google Logo" />}
           config={
             <ToggleSwitch
@@ -105,6 +104,6 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "Google Authentication - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Autenticação com Google - Apollo Admin" }];
 
 export default InstanceGoogleAuthenticationPage;

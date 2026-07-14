@@ -36,17 +36,17 @@ export const getCoreAuthenticationModesMap: (
 }) => ({
   "unique-codes": {
     key: "unique-codes",
-    name: "Unique codes",
+    name: "Códigos únicos",
     description:
-      "Log in or sign up for Apollo using codes sent via email. You need to have set up SMTP to use this method.",
+      "Entre ou cadastre-se no Apollo com códigos enviados por e-mail. É preciso ter o SMTP configurado para usar este método.",
     icon: <Mails className="h-6 w-6 p-0.5 text-tertiary" />,
     config: <EmailCodesConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "ENABLE_MAGIC_LINK_LOGIN",
   },
   "passwords-login": {
     key: "passwords-login",
-    name: "Passwords",
-    description: "Allow members to create accounts with passwords and use it with their email addresses to sign in.",
+    name: "Senhas",
+    description: "Permita que membros criem contas com senha e a usem junto com o e-mail para entrar.",
     icon: <KeyRound className="h-6 w-6 p-0.5 text-tertiary" />,
     config: <PasswordLoginConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "ENABLE_EMAIL_PASSWORD",
@@ -54,7 +54,7 @@ export const getCoreAuthenticationModesMap: (
   google: {
     key: "google",
     name: "Google",
-    description: "Allow members to log in or sign up for Apollo with their Google accounts.",
+    description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas Google.",
     icon: <img src={googleLogo} height={20} width={20} alt="Google Logo" />,
     config: <GoogleConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GOOGLE_ENABLED",
@@ -62,7 +62,7 @@ export const getCoreAuthenticationModesMap: (
   github: {
     key: "github",
     name: "GitHub",
-    description: "Allow members to log in or sign up for Apollo with their GitHub accounts.",
+    description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas GitHub.",
     icon: (
       <img
         src={resolvedTheme === "dark" ? githubDarkModeImage : githubLightModeImage}
@@ -77,7 +77,7 @@ export const getCoreAuthenticationModesMap: (
   gitlab: {
     key: "gitlab",
     name: "GitLab",
-    description: "Allow members to log in or sign up to Apollo with their GitLab accounts.",
+    description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas GitLab.",
     icon: <img src={gitlabLogo} height={20} width={20} alt="GitLab Logo" />,
     config: <GitlabConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GITLAB_ENABLED",
@@ -85,7 +85,7 @@ export const getCoreAuthenticationModesMap: (
   gitea: {
     key: "gitea",
     name: "Gitea",
-    description: "Allow members to log in or sign up to Apollo with their Gitea accounts.",
+    description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas Gitea.",
     icon: <img src={giteaLogo} height={20} width={20} alt="Gitea Logo" />,
     config: <GiteaConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GITEA_ENABLED",
@@ -93,7 +93,7 @@ export const getCoreAuthenticationModesMap: (
   apollo: {
     key: "apollo",
     name: "Apollo Autentikey",
-    description: "Authenticate with your Apollo Autentikey account (OIDC).",
+    description: "Autentique com sua conta Apollo Autentikey (OIDC).",
     icon: <ShieldCheck className="h-6 w-6 p-0.5 text-tertiary" />,
     config: <ApolloConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_APOLLO_ENABLED",

@@ -37,7 +37,7 @@ export const ApolloConfiguration = observer(function ApolloConfiguration(props: 
       {ApolloConfigured ? (
         <div className="flex items-center gap-4">
           <Link href="/authentication/apollo" className={cn(getButtonStyling("link", "base"), "font-medium")}>
-            Edit
+            Editar
           </Link>
           <ToggleSwitch
             value={Boolean(parseInt(ApolloConfig))}
@@ -53,7 +53,7 @@ export const ApolloConfiguration = observer(function ApolloConfiguration(props: 
       ) : (
         <Link href="/authentication/apollo" className={cn(getButtonStyling("secondary", "base"), "text-tertiary")}>
           <Settings2 className="h-4 w-4 p-0.5 text-tertiary" />
-          Configure
+          Configurar
         </Link>
       )}
     </>

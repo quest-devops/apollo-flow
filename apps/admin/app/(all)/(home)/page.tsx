@@ -45,6 +45,6 @@ function HomePage() {
 export default observer(HomePage);
 
 export const meta: Route.MetaFunction = () => [
-  { title: "Admin – Instance Setup & Sign-In" },
-  { name: "description", content: "Configure your Apollo instance or sign in to the admin portal." },
+  { title: "Admin – Configuração e acesso à instância" },
+  { name: "description", content: "Configure sua instância Apollo ou entre no portal de administração." },
 ];
