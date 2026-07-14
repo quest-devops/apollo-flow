@@ -27,29 +27,29 @@ type TAuthHeader = {
 const Titles = {
   [EAuthModes.SIGN_IN]: {
     [EAuthSteps.EMAIL]: {
-      header: "Gestão de projetos moderna.",
+      header: "Gestão inteligente.",
       subHeader: "Bem-vindo de volta ao Apollo.",
     },
     [EAuthSteps.PASSWORD]: {
-      header: "Gestão de projetos moderna.",
+      header: "Gestão inteligente.",
       subHeader: "Bem-vindo de volta ao Apollo.",
     },
     [EAuthSteps.UNIQUE_CODE]: {
-      header: "Gestão de projetos moderna.",
+      header: "Gestão inteligente.",
       subHeader: "Bem-vindo de volta ao Apollo.",
     },
   },
   [EAuthModes.SIGN_UP]: {
     [EAuthSteps.EMAIL]: {
-      header: "Gestão de projetos moderna.",
+      header: "Gestão inteligente.",
       subHeader: "Crie sua conta Apollo.",
     },
     [EAuthSteps.PASSWORD]: {
-      header: "Gestão de projetos moderna.",
+      header: "Gestão inteligente.",
       subHeader: "Crie sua conta Apollo.",
     },
     [EAuthSteps.UNIQUE_CODE]: {
-      header: "Gestão de projetos moderna.",
+      header: "Gestão inteligente.",
       subHeader: "Crie sua conta Apollo.",
     },
   },

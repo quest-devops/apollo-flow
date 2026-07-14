@@ -33,7 +33,7 @@ import interVariableWoff2 from "@fontsource-variable/inter/files/inter-latin-wgh
 import "@fontsource/material-symbols-rounded";
 import "@fontsource/ibm-plex-mono";
 
-const APP_TITLE = "ApolloFlow | Gestão de projetos moderna";
+const APP_TITLE = "ApolloFlow | Gestão inteligente";
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/png", sizes: "32x32", href: favicon32 },
@@ -58,7 +58,7 @@ export function Layout({ children }: { children: ReactNode }) {
   const isSessionRecorderEnabled = parseInt(process.env.VITE_ENABLE_SESSION_RECORDER || "0");
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -106,7 +106,7 @@ export const meta: Route.MetaFunction = () => [
   { property: "og:image", content: ogImage },
   { property: "og:image:width", content: "1200" },
   { property: "og:image:height", content: "630" },
-  { property: "og:image:alt", content: "ApolloFlow - Gestão de projetos moderna" },
+  { property: "og:image:alt", content: "ApolloFlow - Gestão inteligente" },
   {
     name: "keywords",
     content:
@@ -116,7 +116,7 @@ export const meta: Route.MetaFunction = () => [
   { name: "twitter:image", content: ogImage },
   { name: "twitter:image:width", content: "1200" },
   { name: "twitter:image:height", content: "630" },
-  { name: "twitter:image:alt", content: "ApolloFlow - Gestão de projetos moderna" },
+  { name: "twitter:image:alt", content: "ApolloFlow - Gestão inteligente" },
 ];
 
 export default function Root() {

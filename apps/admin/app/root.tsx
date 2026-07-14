@@ -21,7 +21,7 @@ import interVariableWoff2 from "@fontsource-variable/inter/files/inter-latin-wgh
 import "@fontsource/material-symbols-rounded";
 import "@fontsource/ibm-plex-mono";
 
-const APP_TITLE = "Apollo Admin | Gestão de projetos moderna";
+const APP_TITLE = "Apollo Admin | Gestão inteligente";
 const APP_DESCRIPTION =
   "Ferramenta de gestão de projetos para gerenciar itens de trabalho, sprints e roadmaps com tranquilidade.";
 
@@ -43,7 +43,7 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,7 +90,7 @@ export function HydrateFallback() {
 export function ErrorBoundary({ error: _error }: Route.ErrorBoundaryProps) {
   return (
     <div>
-      <p>Something went wrong.</p>
+      <p>Algo deu errado.</p>
     </div>
   );
 }
