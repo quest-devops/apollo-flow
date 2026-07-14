@@ -8,7 +8,8 @@ import os
 authentication_config_variables = [
     {
         "key": "ENABLE_SIGNUP",
-        "value": os.environ.get("ENABLE_SIGNUP", "1"),
+        # Apollo: fechado por padrão — só entra quem foi convidado por um admin
+        "value": os.environ.get("ENABLE_SIGNUP", "0"),
         "category": "AUTHENTICATION",
         "is_encrypted": False,
     },

@@ -103,8 +103,9 @@ class Adapter:
         """Check if sign up is enabled or not and raise exception if not enabled"""
 
         # Get configuration value
+        # Apollo: fechado por padrão — só entra quem foi convidado por um admin
         (ENABLE_SIGNUP,) = get_configuration_value([
-            {"key": "ENABLE_SIGNUP", "default": os.environ.get("ENABLE_SIGNUP", "1")}
+            {"key": "ENABLE_SIGNUP", "default": os.environ.get("ENABLE_SIGNUP", "0")}
         ])
 
         # Check if sign up is disabled and invite is present or not
