@@ -23,6 +23,10 @@ export MACHINE_SIGNATURE=$SIGNATURE
 # Register instance
 python manage.py register_instance "$MACHINE_SIGNATURE"
 
+# Apollo: semeia o admin da instancia (god-mode) a partir das envs INSTANCE_ADMIN_*
+# (no-op se ausentes). Fecha a janela em que /god-mode/setup fica aberta a qualquer um.
+python manage.py bootstrap_instance_admin
+
 # Load the configuration variable
 python manage.py configure_instance
 

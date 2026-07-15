@@ -72,6 +72,13 @@ x-app-env: &app-env
   APOLLO_CLIENT_ID: ${APOLLO_CLIENT_ID:-}
   APOLLO_CLIENT_SECRET: ${APOLLO_CLIENT_SECRET:-}
   APOLLO_WORKSPACE_SLUG: ${APOLLO_WORKSPACE_SLUG:-}
+  # Admin da instância (god-mode) semeado no boot pelo bootstrap_instance_admin
+  # (no-op se e-mail/senha ausentes). A Apollo é dona do god-mode de cada espaço.
+  INSTANCE_ADMIN_EMAIL: ${INSTANCE_ADMIN_EMAIL:-}
+  INSTANCE_ADMIN_PASSWORD: ${INSTANCE_ADMIN_PASSWORD:-}
+  INSTANCE_ADMIN_FIRST_NAME: ${INSTANCE_ADMIN_FIRST_NAME:-Apollo}
+  INSTANCE_ADMIN_LAST_NAME: ${INSTANCE_ADMIN_LAST_NAME:-}
+  INSTANCE_ADMIN_COMPANY: ${INSTANCE_ADMIN_COMPANY:-Apollo Solution}
 
 services:
   web:
