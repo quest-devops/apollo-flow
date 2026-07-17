@@ -96,7 +96,7 @@ export const NoProjectsEmptyState = observer(function NoProjectsEmptyState() {
       icon:
         currentUser?.avatar_url && currentUser?.avatar_url.trim() !== "" ? (
           <Link href={`/${workspaceSlug}/profile/${currentUser?.id}`}>
-            <span className="relative flex size-4 items-center justify-center rounded-full p-4 text-on-color capitalize">
+            <span className="relative flex size-4 items-center justify-center rounded-full p-4 text-tertiary capitalize">
               <img
                 src={getFileURL(currentUser?.avatar_url)}
                 className="absolute top-0 left-0 h-full w-full rounded-full object-cover"
@@ -106,7 +106,7 @@ export const NoProjectsEmptyState = observer(function NoProjectsEmptyState() {
           </Link>
         ) : (
           <Link href={`/${workspaceSlug}/profile/${currentUser?.id}`}>
-            <span className="relative flex size-4 items-center justify-center rounded-full bg-[#028375] p-4 text-13 text-on-color capitalize">
+            <span className="relative flex size-4 items-center justify-center rounded-full bg-[#028375] p-4 text-13 text-white capitalize">
               {(currentUser?.email ?? currentUser?.display_name ?? "?")[0]}
             </span>
           </Link>
@@ -165,7 +165,7 @@ export const NoProjectsEmptyState = observer(function NoProjectsEmptyState() {
               <p className="mb-2 text-11 text-tertiary">{t(item.description)}</p>
               {isStateComplete ? (
                 <div className="flex w-fit items-center gap-2 rounded-full bg-[#17a34a] p-1">
-                  <CheckIcon className="size-3 text-accent-primary text-on-color" />
+                  <CheckIcon className="size-3 text-white" />
                 </div>
               ) : (
                 !item.cta.disabled &&

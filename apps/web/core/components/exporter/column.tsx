@@ -27,7 +27,7 @@ export const useExportColumns = () => {
           <div className="flex items-center gap-x-2">
             <div>
               {avatar_url && avatar_url.trim() !== "" ? (
-                <span className="relative flex h-4 w-4 items-center justify-center rounded-full text-on-color capitalize">
+                <span className="relative flex h-4 w-4 items-center justify-center rounded-full text-tertiary capitalize">
                   <img
                     src={getFileURL(avatar_url)}
                     className="absolute top-0 left-0 h-full w-full rounded-full object-cover"
@@ -35,7 +35,7 @@ export const useExportColumns = () => {
                   />
                 </span>
               ) : (
-                <span className="bg-gray-700 relative flex h-4 w-4 items-center justify-center rounded-full text-11 text-on-color capitalize">
+                <span className="bg-gray-700 relative flex h-4 w-4 items-center justify-center rounded-full text-11 text-white capitalize">
                   {(email ?? display_name ?? "?")[0]}
                 </span>
               )}
