@@ -62,7 +62,7 @@ function ProjectCreateHeader(props: Props) {
       {isClosable && (
         <div className="absolute top-2 right-2 p-2">
           <button type="button" onClick={handleClose} tabIndex={getIndex("close")}>
-            <CloseIcon className="h-5 w-5 text-on-color" />
+            <CloseIcon className="h-5 w-5 text-white" />
           </button>
         </div>
       )}
