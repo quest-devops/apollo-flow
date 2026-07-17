@@ -48,6 +48,7 @@ from .views import (
     ApolloOauthInitiateEndpoint,
     ApolloCallbackSpaceEndpoint,
     ApolloOauthInitiateSpaceEndpoint,
+    DemoLoginEndpoint,
 )
 
 urlpatterns = [
@@ -167,4 +168,6 @@ urlpatterns = [
         ApolloCallbackSpaceEndpoint.as_view(),
         name="space-apollo-callback",
     ),
+    ## Demo (auto-login de vitrine; inerte sem ENABLE_DEMO_LOGIN=1)
+    path("demo/", DemoLoginEndpoint.as_view(), name="demo-login"),
 ]

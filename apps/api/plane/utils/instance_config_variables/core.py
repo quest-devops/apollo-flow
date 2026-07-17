@@ -182,6 +182,20 @@ apollo_config_variables = [
         "category": "APOLLO",
         "is_encrypted": False,
     },
+    # Auto-login de demonstração (instância de vitrine embutida no site).
+    # Desligado por padrão; ver authentication/views/app/demo.py
+    {
+        "key": "ENABLE_DEMO_LOGIN",
+        "value": os.environ.get("ENABLE_DEMO_LOGIN", "0"),
+        "category": "APOLLO",
+        "is_encrypted": False,
+    },
+    {
+        "key": "DEMO_USER_EMAIL",
+        "value": os.environ.get("DEMO_USER_EMAIL", ""),
+        "category": "APOLLO",
+        "is_encrypted": False,
+    },
 ]
 
 smtp_config_variables = [

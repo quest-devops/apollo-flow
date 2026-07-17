@@ -11,6 +11,7 @@ from .app.github import GitHubCallbackEndpoint, GitHubOauthInitiateEndpoint
 from .app.gitlab import GitLabCallbackEndpoint, GitLabOauthInitiateEndpoint
 from .app.gitea import GiteaCallbackEndpoint, GiteaOauthInitiateEndpoint
 from .app.apollo import ApolloCallbackEndpoint, ApolloOauthInitiateEndpoint
+from .app.demo import DemoLoginEndpoint
 from .app.google import GoogleCallbackEndpoint, GoogleOauthInitiateEndpoint
 from .app.magic import MagicGenerateEndpoint, MagicSignInEndpoint, MagicSignUpEndpoint
 
