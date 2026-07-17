@@ -51,7 +51,7 @@ export function NameColumn(props: NameProps) {
             <div className="flex flex-1 items-center gap-x-2 gap-y-2">
               {avatar_url && avatar_url.trim() !== "" ? (
                 <Link href={`/${workspaceSlug}/profile/${id}`}>
-                  <span className="relative flex size-6 items-center justify-center rounded-full text-on-color capitalize">
+                  <span className="relative flex size-6 items-center justify-center rounded-full text-tertiary capitalize">
                     <img
                       src={getFileURL(avatar_url)}
                       className="absolute top-0 left-0 h-full w-full rounded-full object-cover"
@@ -61,7 +61,7 @@ export function NameColumn(props: NameProps) {
                 </Link>
               ) : (
                 <Link href={`/${workspaceSlug}/profile/${id}`}>
-                  <span className="relative flex size-6 items-center justify-center rounded-full bg-layer-3 text-11 text-on-color capitalize">
+                  <span className="relative flex size-6 items-center justify-center rounded-full bg-layer-3 text-11 text-tertiary capitalize">
                     {(email ?? display_name ?? "?")[0]}
                   </span>
                 </Link>

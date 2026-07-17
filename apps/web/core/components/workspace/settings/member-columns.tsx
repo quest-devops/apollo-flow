@@ -60,7 +60,7 @@ export function NameColumn(props: NameProps) {
                 </div>
               ) : avatar_url && avatar_url.trim() !== "" ? (
                 <Link href={`/${workspaceSlug}/profile/${id}`}>
-                  <span className="relative flex size-6 items-center justify-center rounded-full text-on-color capitalize">
+                  <span className="relative flex size-6 items-center justify-center rounded-full text-tertiary capitalize">
                     <img
                       src={getFileURL(avatar_url)}
                       className="absolute top-0 left-0 h-full w-full rounded-full object-cover"
