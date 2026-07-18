@@ -72,6 +72,10 @@ x-app-env: &app-env
   APOLLO_CLIENT_ID: ${APOLLO_CLIENT_ID:-}
   APOLLO_CLIENT_SECRET: ${APOLLO_CLIENT_SECRET:-}
   APOLLO_WORKSPACE_SLUG: ${APOLLO_WORKSPACE_SLUG:-}
+  # Auto-login de demonstração (instância de vitrine embutida no site institucional).
+  # Inerte por padrão; só a stack demo define ENABLE_DEMO_LOGIN=1 no .env.
+  ENABLE_DEMO_LOGIN: ${ENABLE_DEMO_LOGIN:-0}
+  DEMO_USER_EMAIL: ${DEMO_USER_EMAIL:-}
   # Admin da instância (god-mode) semeado no boot pelo bootstrap_instance_admin
   # (no-op se e-mail/senha ausentes). A Apollo é dona do god-mode de cada espaço.
   INSTANCE_ADMIN_EMAIL: ${INSTANCE_ADMIN_EMAIL:-}
