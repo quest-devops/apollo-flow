@@ -53,6 +53,12 @@ urlpatterns = [
         PageViewSet.as_view({"post": "access"}),
         name="project-pages-access",
     ),
+    # direct child pages (nested pages)
+    path(
+        "workspaces/<str:slug>/projects/<uuid:project_id>/pages/<uuid:page_id>/sub-pages/",
+        PageViewSet.as_view({"get": "sub_pages"}),
+        name="project-page-sub-pages",
+    ),
     path(
         "workspaces/<str:slug>/projects/<uuid:project_id>/pages/<uuid:page_id>/description/",
         PagesDescriptionViewSet.as_view({"get": "retrieve", "patch": "partial_update"}),

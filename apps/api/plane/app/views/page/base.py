@@ -19,6 +19,7 @@ from django.db.models import (
     Case,
     When,
     IntegerField,
+    Subquery,
 )
 from django.http import StreamingHttpResponse
 from django.contrib.postgres.aggregates import ArrayAgg
@@ -72,6 +73,22 @@ def unarchive_archive_page_and_descendants(page_id, archived_at):
         cursor.execute(sql, [page_id, archived_at])
 
 
+def get_descendant_page_ids(page_id):
+    # Returns the set of all descendant page ids (children, grandchildren, ...)
+    # of the given page, using a recursive CTE over parent_id.
+    sql = """
+    WITH RECURSIVE descendants AS (
+        SELECT id FROM pages WHERE parent_id = %s
+        UNION ALL
+        SELECT pages.id FROM pages, descendants WHERE pages.parent_id = descendants.id
+    )
+    SELECT id FROM descendants;
+    """
+    with connection.cursor() as cursor:
+        cursor.execute(sql, [str(page_id)])
+        return {str(row[0]) for row in cursor.fetchall()}
+
+
 class PageViewSet(BaseViewSet):
     serializer_class = PageSerializer
     model = Page
@@ -100,6 +117,18 @@ class PageViewSet(BaseViewSet):
             .select_related("workspace")
             .select_related("owned_by")
             .annotate(is_favorite=Exists(subquery))
+            .annotate(
+                sub_pages_count=Coalesce(
+                    Subquery(
+                        Page.objects.filter(parent_id=OuterRef("id"), deleted_at__isnull=True)
+                        .order_by()
+                        .values("parent_id")
+                        .annotate(c=Count("id"))
+                        .values("c")
+                    ),
+                    0,
+                )
+            )
             .order_by(self.request.GET.get("order_by", "-created_at"))
             .prefetch_related("labels")
             .order_by("-is_favorite", "-created_at")
@@ -165,6 +194,18 @@ class PageViewSet(BaseViewSet):
 
             parent = request.data.get("parent", None)
             if parent:
+                # a page cannot be its own parent
+                if str(parent) == str(page_id):
+                    return Response(
+                        {"error": "A page cannot be its own parent"},
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
+                # the new parent cannot be a descendant of this page (would create a cycle)
+                if str(parent) in get_descendant_page_ids(page_id):
+                    return Response(
+                        {"error": "A page cannot be moved into one of its own sub-pages"},
+                        status=status.HTTP_400_BAD_REQUEST,
+                    )
                 _ = Page.objects.get(
                     pk=parent,
                     workspace__slug=slug,
@@ -467,6 +508,79 @@ class PageViewSet(BaseViewSet):
         )
 
         return Response(stats, status=status.HTTP_200_OK)
+
+    def sub_pages(self, request, slug, project_id, page_id):
+        # direct children of the given page, scoped to the project and to
+        # pages the user can see (public, or owned by the requester)
+        subquery = UserFavorite.objects.filter(
+            user=self.request.user,
+            entity_type="page",
+            entity_identifier=OuterRef("pk"),
+            workspace__slug=self.kwargs.get("slug"),
+        )
+        sub_pages = (
+            Page.objects.filter(workspace__slug=slug)
+            .filter(
+                projects__project_projectmember__member=self.request.user,
+                projects__project_projectmember__is_active=True,
+                projects__archived_at__isnull=True,
+            )
+            .filter(parent_id=page_id)
+            .filter(Q(owned_by=self.request.user) | Q(access=0))
+            .select_related("workspace")
+            .select_related("owned_by")
+            .annotate(is_favorite=Exists(subquery))
+            .annotate(
+                sub_pages_count=Coalesce(
+                    Subquery(
+                        Page.objects.filter(parent_id=OuterRef("id"), deleted_at__isnull=True)
+                        .order_by()
+                        .values("parent_id")
+                        .annotate(c=Count("id"))
+                        .values("c")
+                    ),
+                    0,
+                )
+            )
+            .annotate(
+                project=Exists(
+                    ProjectPage.objects.filter(page_id=OuterRef("id"), project_id=self.kwargs.get("project_id"))
+                )
+            )
+            .annotate(
+                label_ids=Coalesce(
+                    ArrayAgg(
+                        "page_labels__label_id",
+                        distinct=True,
+                        filter=~Q(page_labels__label_id__isnull=True),
+                    ),
+                    Value([], output_field=ArrayField(UUIDField())),
+                ),
+                project_ids=Coalesce(
+                    ArrayAgg("projects__id", distinct=True, filter=~Q(projects__id=True)),
+                    Value([], output_field=ArrayField(UUIDField())),
+                ),
+            )
+            .filter(project=True)
+            .order_by("sort_order", "-created_at")
+            .distinct()
+        )
+
+        # guests without guest_view_all_features only see their own pages
+        project = Project.objects.get(pk=project_id)
+        if (
+            ProjectMember.objects.filter(
+                workspace__slug=slug,
+                project_id=project_id,
+                member=request.user,
+                role=ROLE.GUEST.value,
+                is_active=True,
+            ).exists()
+            and not project.guest_view_all_features
+        ):
+            sub_pages = sub_pages.filter(owned_by=request.user)
+
+        return Response(PageSerializer(sub_pages, many=True).data, status=status.HTTP_200_OK)
 
 
 class PageFavoriteViewSet(BaseViewSet):

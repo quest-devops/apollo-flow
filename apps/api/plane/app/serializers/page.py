@@ -32,6 +32,8 @@ class PageSerializer(BaseSerializer):
     # Many to many
     label_ids = serializers.ListField(child=serializers.UUIDField(), required=False)
     project_ids = serializers.ListField(child=serializers.UUIDField(), required=False)
+    # count of direct child pages (annotated in the queryset); None when not annotated
+    sub_pages_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Page
@@ -55,8 +57,13 @@ class PageSerializer(BaseSerializer):
             "logo_props",
             "label_ids",
             "project_ids",
+            "sub_pages_count",
         ]
         read_only_fields = ["workspace", "owned_by"]
+
+    def get_sub_pages_count(self, obj):
+        # returns the annotated count when present, otherwise None
+        return getattr(obj, "sub_pages_count", None)
 
     def create(self, validated_data):
         labels = validated_data.pop("labels", None)
