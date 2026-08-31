@@ -17,7 +17,6 @@ from plane.authentication.adapter.error import (
     AUTHENTICATION_ERROR_CODES,
     AuthenticationException,
 )
-from plane.db.models import Workspace, WorkspaceMember
 from plane.utils.exception_logger import log_exception
 
 
@@ -29,7 +28,6 @@ _JWKS_CLIENT_CACHE = {}
 
 # Mapping between the "role" claim issued by the IdP and Plane workspace roles
 # (see plane.db.models.workspace ROLE_CHOICES: Admin=20, Member=15, Guest=5)
-APOLLO_ROLE_MAP = {"admin": 20, "member": 15, "guest": 5}
 
 
 class ApolloOIDCProvider(OauthAdapter):
@@ -37,7 +35,22 @@ class ApolloOIDCProvider(OauthAdapter):
     scope = "openid email profile groups"
 
     def __init__(self, request, code=None, state=None, callback=None):
-        (APOLLO_ISSUER_URL, APOLLO_CLIENT_ID, APOLLO_CLIENT_SECRET) = get_configuration_value(
+        (# ---------------------------------------------------------------------------
+# 31/ago/2026 — o sync de membership por SLUG FIXO foi REMOVIDO.
+#
+# Ele nasceu na era "uma instancia de Plane por empresa": a cada login SSO,
+# inseria o usuario no workspace de APOLLO_WORKSPACE_SLUG com a role da claim.
+# Na instancia central multi-workspace (frente #103) isso vira furo de
+# isolamento — em 26/ago um gestor de cliente apareceu como member do workspace
+# `apollo` no primeiro login. A mitigacao foi esvaziar o valor; a correcao e
+# esta: quem associa pessoa a workspace e o provisionador
+# (apollo-auth/deploy/provisionar.py), que sabe a empresa de cada um. Sync de
+# login e redundante e perigoso aqui.
+#
+# A variavel APOLLO_WORKSPACE_SLUG tambem saiu da instance configuration para
+# ninguem repor o valor sem querer.
+# ---------------------------------------------------------------------------
+APOLLO_ISSUER_URL, APOLLO_CLIENT_ID, APOLLO_CLIENT_SECRET) = get_configuration_value(
             [
                 {
                     "key": "APOLLO_ISSUER_URL",
@@ -202,10 +215,10 @@ class ApolloOIDCProvider(OauthAdapter):
                 error_message="APOLLO_OAUTH_PROVIDER_ERROR: No email found in id_token",
             )
 
-        # Keep the role/groups claims for workspace membership sync after login.
-        # NOTE: role sync is intentionally unconditional (the IdP is the source of
-        # truth for the access matrix). TODO: _apollo_groups is reserved for the
-        # future company-group (co-*) to workspace mapping; unused today.
+        # As claims `role`/`groups` seguem sendo emitidas pelo IdP, mas o login
+        # NAO escreve mais membership: quem associa pessoa a workspace e o
+        # provisionador (apollo-auth/deploy/provisionar.py). Ver o cabecalho do
+        # arquivo sobre por que o sync por slug fixo foi aposentado.
         self._apollo_role = claims.get("role")
         self._apollo_groups = claims.get("groups", [])
 
@@ -223,46 +236,3 @@ class ApolloOIDCProvider(OauthAdapter):
             }
         )
 
-    def complete_login_or_signup(self):
-        user = super().complete_login_or_signup()
-        # Workspace role sync must never break the login flow
-        try:
-            self.__sync_workspace_role(user)
-        except Exception as e:
-            log_exception(e)
-        return user
-
-    def __sync_workspace_role(self, user):
-        (APOLLO_WORKSPACE_SLUG,) = get_configuration_value(
-            [
-                {
-                    "key": "APOLLO_WORKSPACE_SLUG",
-                    "default": os.environ.get("APOLLO_WORKSPACE_SLUG"),
-                }
-            ]
-        )
-        if not APOLLO_WORKSPACE_SLUG:
-            self.logger.info("APOLLO_WORKSPACE_SLUG not configured, skipping workspace role sync")
-            return
-
-        role = getattr(self, "_apollo_role", None)
-        if role not in APOLLO_ROLE_MAP:
-            self.logger.info(
-                "No valid role claim in id_token for user %s, skipping workspace role sync",
-                user.id,
-            )
-            return
-
-        workspace = Workspace.objects.filter(slug=APOLLO_WORKSPACE_SLUG).first()
-        if workspace is None:
-            self.logger.warning(
-                "Workspace with slug %s not found, skipping workspace role sync",
-                APOLLO_WORKSPACE_SLUG,
-            )
-            return
-
-        WorkspaceMember.objects.update_or_create(
-            workspace=workspace,
-            member=user,
-            defaults={"role": APOLLO_ROLE_MAP[role], "is_active": True},
-        )

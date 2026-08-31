@@ -176,12 +176,9 @@ apollo_config_variables = [
         "category": "APOLLO",
         "is_encrypted": False,
     },
-    {
-        "key": "APOLLO_WORKSPACE_SLUG",
-        "value": os.environ.get("APOLLO_WORKSPACE_SLUG", ""),
-        "category": "APOLLO",
-        "is_encrypted": False,
-    },
+    # APOLLO_WORKSPACE_SLUG removida em 31/ago/2026: era o slug fixo do sync de
+    # membership no login, aposentado por furo de isolamento no multi-workspace.
+    # Ver o cabeçalho de authentication/provider/oauth/apollo.py.
     # Auto-login de demonstração (instância de vitrine embutida no site).
     # Desligado por padrão; ver authentication/views/app/demo.py
     {
